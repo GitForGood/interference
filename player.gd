@@ -15,7 +15,10 @@ enum state{
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var ball = preload("res://inventory/items/ball.tres")
+	var stick = preload("res://inventory/items/stick.tres")
+	inventory.insert(ball)
+	inventory.insert(stick)
 
 func input_check_if_toggle_inventory():
 	if Input.is_action_just_pressed("inventory"):

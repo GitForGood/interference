@@ -1,328 +1,271 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=67 format=3 uid="uid://b6su3dnw78dnd"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=69 format=3 uid="uid://b6su3dnw78dnd"]
 
 [ext_resource type="Script" path="res://inventory/Inventory.gd" id="1_4g7q7"]
+[ext_resource type="Resource" uid="uid://ygstb8ta33kj" path="res://inventory/items/ball.tres" id="1_dkk8i"]
 [ext_resource type="Script" path="res://inventory/Inventory_slot.gd" id="1_pwq2r"]
+[ext_resource type="Resource" uid="uid://bh7tqw47as2wb" path="res://inventory/items/stick.tres" id="3_5jfsg"]
 
 [sub_resource type="Resource" id="Resource_a3rxh"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+item = ExtResource("1_dkk8i")
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_u3jjw"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+item = ExtResource("3_5jfsg")
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_5oldm"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(-1, 0)
 
 [sub_resource type="Resource" id="Resource_5pj6o"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_jjjv0"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_g0rr5"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_0k6yq"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_aanm0"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_bc4ev"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_aw1qa"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+item = ExtResource("3_5jfsg")
+head = Vector2(0, -1)
 
 [sub_resource type="Resource" id="Resource_ri1bq"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_77yly"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_apnm6"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_djgxm"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_2tox4"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_d1mep"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_fm818"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_112sq"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_u07qt"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_jy8d2"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_okkhf"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_a0k7f"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_gktc6"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ldin8"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ih61x"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_k50nk"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_yvh6c"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_gq7n8"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_gh126"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_emmk1"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_r0c28"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_52b5f"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_4fl4v"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ev2ps"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_oetod"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_f7wsh"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_3fkli"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_7w1j7"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_3upgq"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_an1wx"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ih8ve"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_8t8ls"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_dotty"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_jwkpf"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_d5rmw"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ctf62"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_v7cj5"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_pn0li"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_urtk2"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_3ouvm"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_j6paq"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_rmc82"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_l4x66"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_f3iyw"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_d02qw"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_el6gm"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_nq0dk"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_326i4"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_p0uq3"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_qgrjn"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ek7vs"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_qniou"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_oxpsn"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_hkuo7"]
 script = ExtResource("1_pwq2r")
-head_offset = Vector2(0, 0)
-flipped = false
+head = Vector2(0, 0)
 
 [resource]
 script = ExtResource("1_4g7q7")
+width = 8
+height = 8
 item_slots = Array[ExtResource("1_pwq2r")]([SubResource("Resource_a3rxh"), SubResource("Resource_u3jjw"), SubResource("Resource_5oldm"), SubResource("Resource_5pj6o"), SubResource("Resource_jjjv0"), SubResource("Resource_g0rr5"), SubResource("Resource_0k6yq"), SubResource("Resource_aanm0"), SubResource("Resource_bc4ev"), SubResource("Resource_aw1qa"), SubResource("Resource_ri1bq"), SubResource("Resource_77yly"), SubResource("Resource_apnm6"), SubResource("Resource_djgxm"), SubResource("Resource_2tox4"), SubResource("Resource_d1mep"), SubResource("Resource_fm818"), SubResource("Resource_112sq"), SubResource("Resource_u07qt"), SubResource("Resource_jy8d2"), SubResource("Resource_okkhf"), SubResource("Resource_a0k7f"), SubResource("Resource_gktc6"), SubResource("Resource_ldin8"), SubResource("Resource_ih61x"), SubResource("Resource_k50nk"), SubResource("Resource_yvh6c"), SubResource("Resource_gq7n8"), SubResource("Resource_gh126"), SubResource("Resource_emmk1"), SubResource("Resource_r0c28"), SubResource("Resource_52b5f"), SubResource("Resource_4fl4v"), SubResource("Resource_ev2ps"), SubResource("Resource_oetod"), SubResource("Resource_f7wsh"), SubResource("Resource_3fkli"), SubResource("Resource_7w1j7"), SubResource("Resource_3upgq"), SubResource("Resource_an1wx"), SubResource("Resource_ih8ve"), SubResource("Resource_8t8ls"), SubResource("Resource_dotty"), SubResource("Resource_jwkpf"), SubResource("Resource_d5rmw"), SubResource("Resource_ctf62"), SubResource("Resource_v7cj5"), SubResource("Resource_pn0li"), SubResource("Resource_urtk2"), SubResource("Resource_3ouvm"), SubResource("Resource_j6paq"), SubResource("Resource_rmc82"), SubResource("Resource_l4x66"), SubResource("Resource_f3iyw"), SubResource("Resource_d02qw"), SubResource("Resource_el6gm"), SubResource("Resource_nq0dk"), SubResource("Resource_326i4"), SubResource("Resource_p0uq3"), SubResource("Resource_qgrjn"), SubResource("Resource_ek7vs"), SubResource("Resource_qniou"), SubResource("Resource_oxpsn"), SubResource("Resource_hkuo7")])

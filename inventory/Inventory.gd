@@ -2,8 +2,8 @@ extends Resource
 class_name Inventory
 
 
-@export var width: int
-@export var height: int
+@export var width: int = 1
+@export var height: int = 1
 @export var item_slots: Array[InventorySlot]
 
 func insert(item: InventoryItem):

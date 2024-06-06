@@ -11,3 +11,4 @@ vertical_slots = 2
 horizontal_slots = 1
 amount = 1
 max_amount = 1
+flipped = false

@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo0ods8oellra"]
+[gd_scene load_steps=3 format=3 uid="uid://bo0ods8oellra"]
 
 [ext_resource type="PackedScene" uid="uid://1s51o3n7fjnk" path="res://player.tscn" id="1_4r2qy"]
+[ext_resource type="Resource" uid="uid://b6su3dnw78dnd" path="res://inventory/player_inventory.tres" id="2_0flsa"]
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_4r2qy")]
 position = Vector2(1020, 558)
+inventory = ExtResource("2_0flsa")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
