@@ -1,23 +1,30 @@
 extends CharacterBody2D
 
 @export var inventory: Inventory
+@onready var inventory_ui = $InventoryUi
+
 var movement_speed: float = 400.0
 
-var current_state: state = state.idle
+var current_state: state = state.alert
 
 enum state{
-	idle,
-	moving,
+	alert,
 	inventory,
-	interacting,
-	attacking
+	interacting
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func calculate_movement_direction() -> Vector2:
+func input_check_if_toggle_inventory():
+	if Input.is_action_just_pressed("inventory"):
+		if current_state == state.inventory:
+			switch_state(state.alert)
+		else:
+			switch_state(state.inventory)
+
+func input_calculate_movement_direction() -> Vector2:
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("ui_up"):
 		direction += Vector2.UP
@@ -29,9 +36,53 @@ func calculate_movement_direction() -> Vector2:
 		direction += Vector2.LEFT
 	return direction.normalized()
 
+func input_check_if_moving():
+	if Input.is_action_just_pressed("movement_keys"):
+		switch_state(state.alert)
+
+func switch_state(to: state):
+	exit_state()
+	enter_state(to)
+
+func enter_state(to: state):
+	match to:
+		state.alert:
+			current_state = state.alert
+			pass
+		state.inventory:
+			current_state = state.inventory
+			inventory_ui.open()
+			pass
+		state.interacting:
+			current_state = state.interacting
+			pass
+
+func exit_state():
+	match current_state:
+		state.alert:
+			return
+		state.inventory:
+			inventory_ui.close()
+			return
+		state.interacting:
+			return
+
+func state_input_handler():
+	match current_state:
+		state.alert:
+			velocity = input_calculate_movement_direction() * movement_speed
+			input_check_if_toggle_inventory()
+			return
+		state.inventory:
+			input_check_if_moving()
+			input_check_if_toggle_inventory()
+			return
+		state.interacting:
+			input_check_if_moving()
+			return
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity = calculate_movement_direction() * movement_speed
-	
+	state_input_handler()
 	move_and_slide()
 	pass

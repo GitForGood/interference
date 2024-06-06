@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://ygstb8ta33kj"]
+
+[ext_resource type="Script" path="res://inventory/Inventory_item.gd" id="1_ftie3"]
+[ext_resource type="Texture2D" uid="uid://cmygcp5vv5qqa" path="res://assets/ball.png" id="2_63qgs"]
+
+[resource]
+script = ExtResource("1_ftie3")
+name = "ball"
+texture = ExtResource("2_63qgs")
+vertical_slots = 1
+horizontal_slots = 1
+amount = 1
+max_amount = 1

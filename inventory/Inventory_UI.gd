@@ -9,16 +9,9 @@ func _ready():
 	update_slots()
 	close()
 
-func _process(delta):
-	if Input.is_action_just_pressed("inventory"):
-		if is_open:
-			close()
-		else:
-			open()
-
 func update_slots():
-	for i in min(inventory.items.size(), slots.size()):
-		slots[i].update(inventory.items[i])
+	for i in min(inventory.item_slots.size(), slots.size()):
+		slots[i].update(inventory.item_slots[i])
 
 func open():
 	is_open = true

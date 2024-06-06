@@ -17,3 +17,4 @@ shape = SubResource("CircleShape2D_4ljic")
 texture = ExtResource("2_arxcf")
 
 [node name="InventoryUi" parent="." instance=ExtResource("3_i6wyg")]
+visible = false
