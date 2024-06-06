@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dl0xewnfbn4cy"]
+
+[node name="InventoryItemDisplay" type="Panel"]
+custom_minimum_size = Vector2(256, 512)
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -2176.0
+offset_right = -1920.0
+offset_bottom = 512.0
+grow_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
