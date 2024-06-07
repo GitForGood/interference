@@ -15,9 +15,10 @@ enum state{
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var ball: InventoryItem = load("res://inventory/items/ball.tres")
-	var stick: InventoryItem = load("res://inventory/items/stick.tres")
-	var bag: InventoryContainer = load("res://inventory/containers/nixie_pouch.tres")
+	var ball: InventoryItem = preload("res://inventory/items/ball.tres")
+	var stick: InventoryItem = preload("res://inventory/items/stick.tres")
+	stick.flipped = true
+	var bag: InventoryContainer = preload("res://inventory/containers/nixie_pouch.tres")
 	inventory.insert(ball)
 	inventory.insert(stick)
 	inventory.insert(bag)

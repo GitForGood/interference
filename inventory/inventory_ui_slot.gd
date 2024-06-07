@@ -9,11 +9,12 @@ func update(slot: InventorySlot):
 		if slot.head != Vector2.ZERO:
 			$Sprite2D.visible = false
 			return
+		item_visual.rotation = 0
 		item_visual.texture = slot.item.texture
 		var width = slot.item.horizontal_slots
 		var height = slot.item.vertical_slots
 		if slot.item.flipped:
-			item_visual.rotate(-PI/2)
+			item_visual.rotation = -PI/2
 			width = slot.item.vertical_slots
 			height = slot.item.horizontal_slots
 		$Sprite2D.scale.x = width
