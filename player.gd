@@ -89,3 +89,6 @@ func _process(delta):
 	state_input_handler()
 	move_and_slide()
 	pass
+
+func collect(item: InventoryItem):
+	inventory.insert(item)

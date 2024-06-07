@@ -9,7 +9,7 @@ signal consumed(item, amount)
 signal insufficient_consumables(required_item, required_amount, recieved_item, recieved_amount)
 
 func consume(inventory: Inventory):
-	if inventory
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

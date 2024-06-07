@@ -1,6 +1,7 @@
 extends Resource
 class_name Inventory
 
+signal update
 
 @export var width: int = 1
 @export var height: int = 1
@@ -16,6 +17,7 @@ func insert(item: InventoryItem):
 		var slot = item_slots[coordinate_to_index(point)]
 		slot.item = item
 		slot.head = origin - point
+	update.emit()
 
 func first_valid_insert_index(item: InventoryItem) -> int:
 	for index in item_slots.size():
