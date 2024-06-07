@@ -1,18 +1,14 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=69 format=3 uid="uid://b6su3dnw78dnd"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=67 format=3 uid="uid://b6su3dnw78dnd"]
 
-[ext_resource type="Script" path="res://inventory/Inventory.gd" id="1_4g7q7"]
-[ext_resource type="Resource" uid="uid://ygstb8ta33kj" path="res://inventory/items/ball.tres" id="1_dkk8i"]
-[ext_resource type="Script" path="res://inventory/Inventory_slot.gd" id="1_pwq2r"]
-[ext_resource type="Resource" uid="uid://bh7tqw47as2wb" path="res://inventory/items/stick.tres" id="3_5jfsg"]
+[ext_resource type="Script" path="res://inventory/inventory.gd" id="1_4g7q7"]
+[ext_resource type="Script" path="res://inventory/inventory_slot.gd" id="1_pwq2r"]
 
 [sub_resource type="Resource" id="Resource_a3rxh"]
 script = ExtResource("1_pwq2r")
-item = ExtResource("1_dkk8i")
 head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_u3jjw"]
 script = ExtResource("1_pwq2r")
-item = ExtResource("3_5jfsg")
 head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_5oldm"]
@@ -45,7 +41,6 @@ head = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_aw1qa"]
 script = ExtResource("1_pwq2r")
-item = ExtResource("3_5jfsg")
 head = Vector2(0, -1)
 
 [sub_resource type="Resource" id="Resource_ri1bq"]

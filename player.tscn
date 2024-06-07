@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_6gec5"]
 [ext_resource type="Texture2D" uid="uid://esf1rl0wlnp0" path="res://assets/Inventory_window_2.png" id="2_arxcf"]
-[ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/Inventory_UI.tscn" id="3_i6wyg"]
+[ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/inventory_UI.tscn" id="3_i6wyg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ljic"]
 radius = 32.0

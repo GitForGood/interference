@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://du71sh0qrv3k4"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_3gmux"]
+
+[resource]
+script = ExtResource("1_3gmux")
+name = "nixie tube"
+vertical_slots = 2
+horizontal_slots = 1
+flipped = false
