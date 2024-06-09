@@ -24,12 +24,14 @@ func _process(delta):
 		var width = (mouse_position - global_position).distance_to(Vector2.ZERO)
 		var offset = width / 2
 		var ray: RayCast2D = $cone_end_check
-		$cone.offset = Vector2(offset, 0)
-		$cone.texture.width = width
 		ray.target_position.x = (mouse_position - global_position).distance_to(Vector2.ZERO)
 		if ray.is_colliding():
+			$cone.offset = Vector2(offset + 128, 0)
+			$cone.texture.width = width + 256
 			$cone_end.visible = false
 		else:
+			$cone.offset = Vector2(offset, 0)
+			$cone.texture.width = width
 			$cone_end.visible = true
 			$cone_end.offset = Vector2(width+31, 0)
 	look_at(mouse_position)

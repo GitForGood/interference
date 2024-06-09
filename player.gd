@@ -76,6 +76,7 @@ func enter_state(to: state):
 func exit_state():
 	match current_state:
 		state.alert:
+			velocity = Vector2.ZERO
 			return
 		state.inventory:
 			inventory_ui.close()

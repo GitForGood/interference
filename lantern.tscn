@@ -53,11 +53,13 @@ offset = Vector2(32, 0)
 
 [node name="cone_end" type="PointLight2D" parent="."]
 color = Color(0.996078, 0.847059, 0.592157, 1)
+blend_mode = 2
 range_z_max = 7
 range_item_cull_mask = 15
 shadow_enabled = true
 shadow_item_cull_mask = 14
 texture = SubResource("GradientTexture2D_apfmf")
+offset = Vector2(32, 0)
 
 [node name="cone_end_check" type="RayCast2D" parent="."]
 target_position = Vector2(58, 0)
