@@ -2,10 +2,14 @@ extends Resource
 class_name Inventory
 
 signal update
+signal failed_insert(item: InventoryItem)
 
 @export var width: int
 @export var height: int
 @export var item_slots: Array[InventorySlot]
+
+func insert_at(item: InventoryItem, at: Vector2):
+	pass
 
 func insert(item: InventoryItem):
 	#calculate size of item and its offsets and store in array of points
@@ -40,6 +44,7 @@ func insert(item: InventoryItem):
 				slot.head = offset * -1
 			update.emit()
 			return
+	failed_insert.emit(item)
 
 # lower is inclusive, upper is exclusive
 func is_within_bounds(lower: int, upper: int, value: int):

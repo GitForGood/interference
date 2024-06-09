@@ -1,22 +1,26 @@
 extends Panel
 
-@onready var item_visual: Sprite2D = $CenterContainer/Panel/ItemDisplay
+@onready var item_display: TextureRect = $ItemDisplay
+const SLOT_SIZE = 64
+var displaying: InventorySlot
 
 func update(slot: InventorySlot):
+	displaying = slot
 	if !slot.item:
-		item_visual.visible = false
+		item_display.visible = false
 	else:
 		if slot.head != Vector2.ZERO:
-			$Sprite2D.visible = false
+			$Background.visible = false
 			return
-		item_visual.rotation = 0
-		item_visual.texture = slot.item.texture
+		item_display.rotation = 0
+		item_display.texture = slot.item.texture
 		var width = slot.item.horizontal_slots
 		var height = slot.item.vertical_slots
 		if slot.item.flipped:
-			item_visual.rotation = -PI/2
+			item_display.rotation = -PI/2
 			width = slot.item.vertical_slots
 			height = slot.item.horizontal_slots
-		$Sprite2D.scale.x = width
-		$Sprite2D.scale.y = height
-		item_visual.visible = true
+		$Background.size.x = width * SLOT_SIZE
+		$Background.size.y = height * SLOT_SIZE
+		item_display.scale = Vector2(width,height)
+		item_display.visible = true

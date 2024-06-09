@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var inventory: Inventory
 @onready var inventory_ui = $InventoryUi
+@onready var flashlight = $Lantern
 
 var movement_speed: float = 400.0
 
@@ -17,11 +18,15 @@ enum state{
 func _ready():
 	var ball: InventoryItem = preload("res://inventory/items/ball.tres")
 	var stick: InventoryItem = preload("res://inventory/items/stick.tres")
-	stick.flipped = true
+	#stick.flipped = true
 	var bag: InventoryContainer = preload("res://inventory/containers/nixie_pouch.tres")
+	var tube: InventoryItem = preload("res://inventory/items/nixie_tube.tres")
 	inventory.insert(ball)
 	inventory.insert(stick)
+	inventory.insert(tube)
 	inventory.insert(bag)
+	inventory.insert(tube)
+	inventory.insert(tube)
 
 func input_check_if_toggle_inventory():
 	if Input.is_action_just_pressed("inventory"):
@@ -41,6 +46,11 @@ func input_calculate_movement_direction() -> Vector2:
 	if Input.is_action_pressed("ui_left"):
 		direction += Vector2.LEFT
 	return direction.normalized()
+
+func check_if_toggle_flashlight():
+	if Input.is_action_just_pressed("flashlight"):
+		flashlight.flip()
+		flashlight.update()
 
 func input_check_if_moving():
 	if Input.is_action_just_pressed("movement_keys"):
@@ -78,6 +88,7 @@ func state_input_handler():
 		state.alert:
 			velocity = input_calculate_movement_direction() * movement_speed
 			input_check_if_toggle_inventory()
+			check_if_toggle_flashlight()
 			return
 		state.inventory:
 			input_check_if_moving()
