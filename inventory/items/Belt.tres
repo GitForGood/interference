@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://cskjeji1d5it4"]
+
+[ext_resource type="Script" path="res://inventory/InventoryItem.gd" id="1_6a6h4"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_6a6h4")
+name = "Belt"
+vertical_slots = 3
+horizontal_slots = 1
+flipped = false

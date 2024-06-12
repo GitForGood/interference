@@ -8,6 +8,6 @@ resource_local_to_scene = true
 script = ExtResource("1_o1ruh")
 name = "nixie tube"
 texture = ExtResource("2_3kkba")
-vertical_slots = 2
+vertical_slots = 1
 horizontal_slots = 1
 flipped = false

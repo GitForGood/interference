@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://d0wrf44a8phvc"]
+
+[ext_resource type="Script" path="res://inventory/InventoryItem.gd" id="1_enp3o"]
+
+[resource]
+script = ExtResource("1_enp3o")
+name = ""
+vertical_slots = 1
+horizontal_slots = 1
+flipped = false
