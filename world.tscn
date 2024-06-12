@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://bfrys5o01ucb5" path="res://LightRetainer.tres" id="2_nddpc"]
 [ext_resource type="Texture2D" uid="uid://bgy74ex7w1bkr" path="res://assets/floor_tiles.png" id="3_b8aqf"]
 [ext_resource type="Texture2D" uid="uid://8dhreu1fktmf" path="res://assets/walls.png" id="4_vflsj"]
-[ext_resource type="PackedScene" uid="uid://1s51o3n7fjnk" path="res://Player.tscn" id="5_6ac1o"]
+[ext_resource type="PackedScene" uid="uid://1s51o3n7fjnk" path="res://player.tscn" id="5_6ac1o"]
 [ext_resource type="Resource" uid="uid://b6su3dnw78dnd" path="res://inventory/PlayerInventory.tres" id="6_je7ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kdk1"]
