@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpeeqkp8vbq5u"]
 
-[ext_resource type="Script" path="res://inventory/InventoryUI.gd" id="1_jd7qn"]
-[ext_resource type="Texture2D" uid="uid://esf1rl0wlnp0" path="res://assets/Inventory_window_2.png" id="2_68gwa"]
-[ext_resource type="PackedScene" uid="uid://dl0xewnfbn4cy" path="res://inventory/InventoryItemDisplay.tscn" id="4_bsjh5"]
+[ext_resource type="Script" path="res://inventory/UI/InventoryUI.gd" id="1_ftif3"]
+[ext_resource type="Texture2D" uid="uid://esf1rl0wlnp0" path="res://assets/Inventory_window_2.png" id="2_wdv3b"]
+[ext_resource type="PackedScene" uid="uid://dl0xewnfbn4cy" path="res://inventory/UI/InventoryItemDisplay.tscn" id="3_3nsn6"]
 
 [node name="InventoryUi" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_jd7qn")
+script = ExtResource("1_ftif3")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -22,7 +22,7 @@ offset_right = 448.0
 offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_68gwa")
+texture = ExtResource("2_wdv3b")
 region_rect = Rect2(0, 0, 64, 64)
 patch_margin_left = 27
 patch_margin_top = 27
@@ -48,7 +48,7 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 8
 
-[node name="InventoryItemDisplay" parent="NinePatchRect/Control" instance=ExtResource("4_bsjh5")]
+[node name="InventoryItemDisplay" parent="NinePatchRect/Control" instance=ExtResource("3_3nsn6")]
 layout_mode = 1
 offset_left = -32.0
 offset_right = 0.0

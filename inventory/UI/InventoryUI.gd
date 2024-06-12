@@ -13,7 +13,7 @@ func _ready():
 
 func insert_slots():
 	var grid = $NinePatchRect/Control/GridContainer
-	var slot_file = preload("res://inventory/InventoryUISlot.tscn")
+	var slot_file = preload("res://inventory/UI/InventoryUISlot.tscn")
 	for index in inventory.item_slots.size():
 		var slot = slot_file.instantiate()
 		slots.append(slot)
