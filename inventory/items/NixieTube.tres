@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://du71sh0qrv3k4"]
+
+[ext_resource type="Script" path="res://inventory/InventoryItem.gd" id="1_o1ruh"]
+[ext_resource type="Texture2D" uid="uid://bbmohy2lrbfjd" path="res://assets/tube_lit_1.png" id="2_3kkba"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_o1ruh")
+name = "nixie tube"
+texture = ExtResource("2_3kkba")
+vertical_slots = 2
+horizontal_slots = 1
+flipped = false

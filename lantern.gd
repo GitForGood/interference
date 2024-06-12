@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var cone: bool = false
+@onready var radial: PointLight2D = $radial
+
 
 func flip():
 	cone = !cone
@@ -33,5 +35,5 @@ func _process(delta):
 			$cone.offset = Vector2(offset, 0)
 			$cone.texture.width = width
 			$cone_end.visible = true
-			$cone_end.offset = Vector2(width+31, 0)
+			$cone_end.offset = Vector2(width+30, 0)
 	look_at(mouse_position)

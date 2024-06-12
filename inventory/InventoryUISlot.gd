@@ -18,9 +18,13 @@ func update(slot: InventorySlot):
 		var height = slot.item.vertical_slots
 		if slot.item.flipped:
 			item_display.rotation = -PI/2
-			width = slot.item.vertical_slots
-			height = slot.item.horizontal_slots
-		$Background.size.x = width * SLOT_SIZE
-		$Background.size.y = height * SLOT_SIZE
-		item_display.scale = Vector2(width,height)
+			item_display.offset_top = width * SLOT_SIZE
+			$Background.size.x = height * SLOT_SIZE
+			$Background.size.y = width * SLOT_SIZE
+		else:
+			$Background.size.x = width * SLOT_SIZE
+			$Background.size.y = height * SLOT_SIZE
+		item_display.size.x = width * SLOT_SIZE
+		item_display.size.y = height * SLOT_SIZE
+		#item_display.scale = Vector2(width,height)
 		item_display.visible = true

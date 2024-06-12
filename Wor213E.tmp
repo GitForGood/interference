@@ -103,5 +103,4 @@ position = Vector2(1020, 558)
 inventory = ExtResource("6_je7ge")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 blend_mode = 1

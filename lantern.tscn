@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://durcxtky3bfad"]
 
-[ext_resource type="Script" path="res://lantern.gd" id="1_hldyk"]
+[ext_resource type="Script" path="res://Lantern.gd" id="1_hldyk"]
 
 [sub_resource type="Gradient" id="Gradient_n3cb7"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)

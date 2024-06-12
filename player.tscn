@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://1s51o3n7fjnk"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_6gec5"]
+[ext_resource type="Script" path="res://Player.gd" id="1_6gec5"]
 [ext_resource type="Texture2D" uid="uid://esf1rl0wlnp0" path="res://assets/Inventory_window_2.png" id="2_arxcf"]
-[ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/inventory_UI.tscn" id="3_i6wyg"]
-[ext_resource type="PackedScene" uid="uid://durcxtky3bfad" path="res://lantern.tscn" id="4_ajwjb"]
+[ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/InventoryUI.tscn" id="3_i6wyg"]
+[ext_resource type="PackedScene" uid="uid://durcxtky3bfad" path="res://Lantern.tscn" id="4_phm02"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ljic"]
 radius = 32.0
@@ -24,6 +24,6 @@ visible = false
 light_mask = 128
 visibility_layer = 128
 
-[node name="Lantern" parent="." instance=ExtResource("4_ajwjb")]
+[node name="Lantern" parent="." instance=ExtResource("4_phm02")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
