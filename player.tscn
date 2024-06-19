@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://1s51o3n7fjnk"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_6gec5"]
+[ext_resource type="Script" path="res://Player.gd" id="1_6gec5"]
 [ext_resource type="Texture2D" uid="uid://esf1rl0wlnp0" path="res://assets/Inventory_window_2.png" id="2_arxcf"]
-[ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/UI/inventoryUI.tscn" id="3_lhp1v"]
+[ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/UI/InventoryUI.tscn" id="3_lhp1v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ljic"]
-radius = 16.0
+radius = 32.0
 
 [sub_resource type="Gradient" id="Gradient_l5y1v"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -25,7 +25,6 @@ script = ExtResource("1_6gec5")
 shape = SubResource("CircleShape2D_4ljic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_arxcf")
 
 [node name="InventoryUi" parent="." instance=ExtResource("3_lhp1v")]
@@ -47,7 +46,6 @@ collision_layer = 0
 collision_mask = 124
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone"]
-position = Vector2(-16, 0)
 polygon = PackedVector2Array(16, 16, 201, 207, 238, 153, 266, 86, 280, 0, 269, -91, 240, -159, 212, -200, 16, -16)
 
 [connection signal="area_entered" from="VisionCone" to="." method="_on_vision_cone_area_entered"]
