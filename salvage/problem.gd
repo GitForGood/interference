@@ -1,15 +1,16 @@
 extends Resource
 class_name Problem
 
-@export var instant_solutions: Array[Solution]
-@export var combinatory_solutions: Array[SolutionCluster]
+@export var solutions: Array[Solution]
+@export var next_problem: Problem
+@export_category("success")
+@export var successful_loot_table: WeightedLootTable
+@export var successful_loot_rolls: int
+@export_category("fail")
+@export var failed_loot_table: WeightedLootTable
+@export var failed_loot_rolls: int
 
-func can_solve(item) -> bool:
-	var instant = instant_solutions.any(func(sol): return item.solutions.has(sol))
-	if instant:
-		return true
-	for array in combinatory_solutions:
-		var combination = array.all(func(sol): return item.solutions.has(sol))
-		if combination:
-			return true
-	return false
+
+#returns possible solutions with item. null if 
+func can_solve(item) -> Array[Solution]:
+	return solutions.filter(func(sol): return item.solutions.has(sol))

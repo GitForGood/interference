@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var player = $Player
-@onready var floor = $Floor
-@onready var walls = $Walls
+@onready var level_floor = $Floor
+@onready var level_walls = $Walls
 @onready var lantern = $Player/Lantern
 
 # Called when the node enters the scene tree for the first time.

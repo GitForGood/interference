@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Problem" load_steps=4 format=3 uid="uid://jwr1k0dfg4nx"]
+
+[ext_resource type="Resource" uid="uid://clwqtsuqswa34" path="res://salvage/solutions/smash.tres" id="1_lollu"]
+[ext_resource type="Script" path="res://salvage/problem.gd" id="1_pble2"]
+[ext_resource type="Resource" uid="uid://y74pvjhxgk6q" path="res://salvage/solutions/screw.tres" id="2_oihcc"]
+
+[resource]
+script = ExtResource("1_pble2")
+instant_solutions = Array[Resource("res://salvage/solution.gd")]([ExtResource("1_lollu"), ExtResource("2_oihcc")])
+successful_loot = Array[Resource("res://inventory/inventory_item.gd")]([])
+brute_loot = Array[Resource("res://inventory/inventory_item.gd")]([])

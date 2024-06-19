@@ -4,10 +4,13 @@ extends CharacterBody2D
 @export var equipment_slot: InventoryItem
 @onready var inventory_ui = $InventoryUi
 @onready var flashlight = $Lantern
+@onready var raycast = $RayCast2D
 
 var movement_speed: float = 300.0
 
 var current_state: state = state.alert
+
+var current_bodies_in_scope: Array[CharacterBody2D]
 
 enum state{
 	alert,
@@ -105,7 +108,8 @@ func state_input_handler():
 func _process(delta):
 	state_input_handler()
 	move_and_slide()
-	look_at(get_global_mouse_position())
+	$VisionCone.look_at(get_global_mouse_position())
+	update_vision()
 	pass
 
 func collect(item: InventoryItem):
@@ -119,9 +123,23 @@ func equip_item(item: InventoryItem):
 func unequip_item():
 	collect(equipment_slot)
 	equipment_slot = null
-
-func _on_vision_cone_area_entered(area):
-	area.get_parent().visible = true
+	
+func _on_vision_cone_area_entered(area: Area2D):
+	if current_bodies_in_scope.has(area.get_parent()):
+		return
+	current_bodies_in_scope.append(area.get_parent())
 
 func _on_vision_cone_area_exited(area):
-	area.get_parent().visible = false
+	var body = area.get_parent()
+	if current_bodies_in_scope.has(body):
+		current_bodies_in_scope.erase(body)
+		body.visible = false
+
+func update_vision():
+	for body in current_bodies_in_scope:
+		raycast.target_position = to_local(body.global_position)
+		raycast.force_raycast_update()
+		if not raycast.get_collider():
+			body.visible = true
+		else:
+			body.visible = false

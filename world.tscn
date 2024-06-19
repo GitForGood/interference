@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bgy74ex7w1bkr" path="res://assets/floor_tiles.png" id="3_b8aqf"]
 [ext_resource type="Texture2D" uid="uid://8dhreu1fktmf" path="res://assets/walls.png" id="4_vflsj"]
 [ext_resource type="PackedScene" uid="uid://1s51o3n7fjnk" path="res://player.tscn" id="5_6ac1o"]
-[ext_resource type="PackedScene" uid="uid://cggix2y51msnq" path="res://npcs/Spitter.tscn" id="6_e6cit"]
+[ext_resource type="PackedScene" uid="uid://b5l8ukx3i4ifb" path="res://npcs/spitter.tscn" id="6_idmps"]
 [ext_resource type="Resource" uid="uid://b6su3dnw78dnd" path="res://inventory/player_inventory.tres" id="6_je7ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kdk1"]
@@ -105,5 +105,5 @@ inventory = ExtResource("6_je7ge")
 blend_mode = 1
 range_item_cull_mask = 0
 
-[node name="Spitter" parent="." instance=ExtResource("6_e6cit")]
-position = Vector2(873, 422)
+[node name="spitter" parent="." instance=ExtResource("6_idmps")]
+position = Vector2(870, 400)
