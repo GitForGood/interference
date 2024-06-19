@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b6ocq86kxpis7"]
+
+[ext_resource type="Script" path="res://inventory/InventoryItem.gd" id="1_waq8u"]
+[ext_resource type="Texture2D" uid="uid://dgm888as6med5" path="res://assets/wrench.png" id="2_ukj3i"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_waq8u")
+name = "Adjustable Wrench"
+texture = ExtResource("2_ukj3i")
+vertical_slots = 4
+horizontal_slots = 1
+flipped = false

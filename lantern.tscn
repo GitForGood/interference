@@ -1,6 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://durcxtky3bfad"]
+[gd_scene load_steps=4 format=3 uid="uid://juh7c6exjbu3"]
 
-[ext_resource type="Script" path="res://Lantern.gd" id="1_hldyk"]
+[sub_resource type="GDScript" id="GDScript_5l43j"]
+script/source = "extends Node2D
+
+@onready var radial: PointLight2D = $radial
+
+func flip():
+	radial.enabled = !radial.enabled
+
+func turn_off():
+	radial.enabled = false
+func turn_on():
+	radial.enabled = true
+
+func _ready():
+	turn_off()
+
+func _process(delta):
+	pass
+"
 
 [sub_resource type="Gradient" id="Gradient_n3cb7"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -11,28 +29,10 @@ width = 256
 height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.899083, 0.137615)
-
-[sub_resource type="Gradient" id="Gradient_nqjng"]
-interpolation_mode = 2
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fviwu"]
-gradient = SubResource("Gradient_nqjng")
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0.5)
-repeat = 2
-
-[sub_resource type="Gradient" id="Gradient_yt4cc"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_apfmf"]
-gradient = SubResource("Gradient_yt4cc")
-fill = 1
-fill_from = Vector2(0, 0.5)
-fill_to = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.504587)
 
 [node name="Lantern" type="Node2D"]
-script = ExtResource("1_hldyk")
+script = SubResource("GDScript_5l43j")
 
 [node name="radial" type="PointLight2D" parent="."]
 color = Color(0.996078, 0.847059, 0.592157, 1)
@@ -40,27 +40,3 @@ range_z_max = 7
 shadow_enabled = true
 shadow_item_cull_mask = 14
 texture = SubResource("GradientTexture2D_ebimg")
-
-[node name="cone" type="PointLight2D" parent="."]
-position = Vector2(1.52588e-05, -5.96046e-08)
-color = Color(0.997156, 0.845529, 0.592844, 1)
-range_z_max = 7
-range_item_cull_mask = 15
-shadow_enabled = true
-shadow_item_cull_mask = 14
-texture = SubResource("GradientTexture2D_fviwu")
-offset = Vector2(32, 0)
-
-[node name="cone_end" type="PointLight2D" parent="."]
-color = Color(0.996078, 0.847059, 0.592157, 1)
-blend_mode = 2
-range_z_max = 7
-range_item_cull_mask = 15
-shadow_enabled = true
-shadow_item_cull_mask = 14
-texture = SubResource("GradientTexture2D_apfmf")
-offset = Vector2(32, 0)
-
-[node name="cone_end_check" type="RayCast2D" parent="."]
-target_position = Vector2(58, 0)
-collision_mask = 14

@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://1s51o3n7fjnk"]
+[gd_scene load_steps=7 format=3 uid="uid://1s51o3n7fjnk"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_6gec5"]
 [ext_resource type="Texture2D" uid="uid://esf1rl0wlnp0" path="res://assets/Inventory_window_2.png" id="2_arxcf"]
 [ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/UI/InventoryUI.tscn" id="3_lhp1v"]
-[ext_resource type="PackedScene" uid="uid://durcxtky3bfad" path="res://Lantern.tscn" id="4_phm02"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ljic"]
 radius = 32.0
+
+[sub_resource type="Gradient" id="Gradient_l5y1v"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rfx7h"]
+gradient = SubResource("Gradient_l5y1v")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 14
@@ -24,6 +32,21 @@ visible = false
 light_mask = 128
 visibility_layer = 128
 
-[node name="Lantern" parent="." instance=ExtResource("4_phm02")]
-
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Lantern" type="PointLight2D" parent="."]
+range_item_cull_mask = 7
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_rfx7h")
+texture_scale = 10.0
+
+[node name="VisionCone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 124
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone"]
+polygon = PackedVector2Array(16, 16, 201, 207, 238, 153, 266, 86, 280, 0, 269, -91, 240, -159, 212, -200, 16, -16)
+
+[connection signal="area_entered" from="VisionCone" to="." method="_on_vision_cone_area_entered"]
+[connection signal="area_exited" from="VisionCone" to="." method="_on_vision_cone_area_exited"]

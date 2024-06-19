@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bfrys5o01ucb5"]
-
-[ext_resource type="Shader" path="res://LightRetainer.gdshader" id="1_7orw3"]
-
-[resource]
-shader = ExtResource("1_7orw3")
-shader_parameter/light_position = null
-shader_parameter/light_radius = null
-shader_parameter/update_threshold = null

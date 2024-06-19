@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Solution" load_steps=2 format=3 uid="uid://c3vt6wfth0t04"]
+
+[ext_resource type="Script" path="res://salvage/Solution.gd" id="1_tdrij"]
+
+[resource]
+script = ExtResource("1_tdrij")
+name = ""

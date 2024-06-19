@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqbmj7hecfavm"
-path="res://.godot/imported/flashlight.png-50b4953a7b90a11dc7f02488b081336e.ctex"
+uid="uid://dgm888as6med5"
+path="res://.godot/imported/wrench.png-39f6665c29d6e5f1874a73540de1c34f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flashlight.png"
-dest_files=["res://.godot/imported/flashlight.png-50b4953a7b90a11dc7f02488b081336e.ctex"]
+source_file="res://assets/wrench.png"
+dest_files=["res://.godot/imported/wrench.png-39f6665c29d6e5f1874a73540de1c34f.ctex"]
 
 [params]
 

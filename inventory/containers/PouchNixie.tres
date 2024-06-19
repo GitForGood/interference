@@ -1,8 +1,9 @@
 [gd_resource type="Resource" script_class="InventoryContainer" load_steps=4 format=3 uid="uid://d0vo4dle8o1b8"]
 
-[ext_resource type="Resource" uid="uid://du71sh0qrv3k4" path="res://inventory/items/NixieTube.tres" id="1_o2cqb"]
+[ext_resource type="Resource" uid="uid://du71sh0qrv3k4" path="res://inventory/items/electrical_base_components/NixieTube.tres" id="1_o2cqb"]
 [ext_resource type="Script" path="res://inventory/InventoryContainer.gd" id="2_8eskc"]
 [ext_resource type="Texture2D" uid="uid://c0yih2pbttrg2" path="res://assets/nixie_pouch.png" id="3_cuqwc"]
+
 
 [resource]
 resource_local_to_scene = true

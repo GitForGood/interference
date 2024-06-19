@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 @export var inventory: Inventory
+@export var equipment_slot: InventoryItem
 @onready var inventory_ui = $InventoryUi
 @onready var flashlight = $Lantern
 
-var movement_speed: float = 400.0
+var movement_speed: float = 300.0
 
 var current_state: state = state.alert
 
@@ -17,9 +18,10 @@ enum state{
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var bag: InventoryContainer = load("res://inventory/containers/PouchNixie.tres")
-	bag.flipped = true
-	var tube: InventoryItem = load("res://inventory/items/NixieTube.tres")
+	var tube: InventoryItem = load("res://inventory/items/electrical_base_components/NixieTube.tres")
+	var wrench: InventoryItem = load("res://inventory/items/equipment/abittaboth/Wrench.tres")
 	var tmpTube = tube.duplicate()
+	bag.flipped = true
 	inventory.insert(tmpTube)
 	tmpTube = tube.duplicate()
 	inventory.insert(tmpTube)
@@ -27,7 +29,7 @@ func _ready():
 	tmpTube.flipped = true
 	inventory.insert(tmpTube)
 	inventory.insert(bag)
-
+	inventory.insert(wrench)
 
 func input_check_if_toggle_inventory():
 	if Input.is_action_just_pressed("inventory"):
@@ -50,8 +52,7 @@ func input_calculate_movement_direction() -> Vector2:
 
 func check_if_toggle_flashlight():
 	if Input.is_action_just_pressed("flashlight"):
-		flashlight.flip()
-		flashlight.update()
+		flashlight.enabled = !flashlight.enabled
 
 func input_check_if_moving():
 	if Input.is_action_just_pressed("movement_keys"):
@@ -104,7 +105,23 @@ func state_input_handler():
 func _process(delta):
 	state_input_handler()
 	move_and_slide()
+	look_at(get_global_mouse_position())
 	pass
 
 func collect(item: InventoryItem):
 	inventory.insert(item)
+
+func equip_item(item: InventoryItem):
+	if equipment_slot:
+		(equipment_slot)
+	equipment_slot = item
+
+func unequip_item():
+	collect(equipment_slot)
+	equipment_slot = null
+
+func _on_vision_cone_area_entered(area):
+	area.get_parent().visible = true
+
+func _on_vision_cone_area_exited(area):
+	area.get_parent().visible = false
