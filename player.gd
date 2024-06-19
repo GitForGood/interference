@@ -17,9 +17,9 @@ enum state{
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var bag: InventoryContainer = load("res://inventory/containers/PouchNixie.tres")
-	var tube: InventoryItem = load("res://inventory/items/electrical_base_components/NixieTube.tres")
-	var wrench: InventoryItem = load("res://inventory/items/equipment/abittaboth/Wrench.tres")
+	var bag: InventoryContainer = load("res://inventory/containers/pouch_nixie.tres")
+	var tube: InventoryItem = load("res://inventory/items/electrical_base_components/nixie_tube.tres")
+	var wrench: InventoryItem = load("res://inventory/items/equipment/abittaboth/wrench.tres")
 	var tmpTube = tube.duplicate()
 	bag.flipped = true
 	inventory.insert(tmpTube)
