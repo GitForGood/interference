@@ -1,6 +1,6 @@
 extends Control
 
-@onready var inventory: Inventory = preload("res://inventory/PlayerInventory.tres")
+@onready var inventory: Inventory = preload("res://inventory/player_inventory.tres")
 @onready var slots: Array = []
 
 var is_open: bool = false
@@ -13,7 +13,7 @@ func _ready():
 
 func insert_slots():
 	var grid = $NinePatchRect/Control/GridContainer
-	var slot_file = preload("res://inventory/UI/InventoryUISlot.tscn")
+	var slot_file = preload("res://inventory/ui/inventory_ui_slot.tscn")
 	for index in inventory.item_slots.size():
 		var slot = slot_file.instantiate()
 		slots.append(slot)
