@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cggix2y51msnq"]
 
-[ext_resource type="Script" path="res://npcs/Spitter.gd" id="1_hkre8"]
+[ext_resource type="Script" path="res://npcs/spitter.gd" id="1_hkre8"]
 [ext_resource type="Texture2D" uid="uid://cmygcp5vv5qqa" path="res://assets/ball.png" id="2_gx3yd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r2h5e"]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://bo0ods8oellra"]
 
-[ext_resource type="Script" path="res://World.gd" id="1_u5d4x"]
-[ext_resource type="Texture2D" uid="uid://bgy74ex7w1bkr" path="res://assets/floor_tiles.png" id="3_b8aqf"]
-[ext_resource type="Texture2D" uid="uid://8dhreu1fktmf" path="res://assets/walls.png" id="4_vflsj"]
-[ext_resource type="PackedScene" uid="uid://1s51o3n7fjnk" path="res://Player.tscn" id="5_6ac1o"]
-[ext_resource type="PackedScene" uid="uid://cggix2y51msnq" path="res://npcs/Spitter.tscn" id="6_e6cit"]
-[ext_resource type="Resource" uid="uid://b6su3dnw78dnd" path="res://inventory/PlayerInventory.tres" id="6_je7ge"]
+[ext_resource type="Script" path="res://world.gd" id="1_6nwxh"]
+[ext_resource type="Texture2D" uid="uid://bgy74ex7w1bkr" path="res://assets/floor_tiles.png" id="2_063g7"]
+[ext_resource type="Texture2D" uid="uid://8dhreu1fktmf" path="res://assets/walls.png" id="3_07lvh"]
+[ext_resource type="PackedScene" uid="uid://1s51o3n7fjnk" path="res://player.tscn" id="4_0mqv8"]
+[ext_resource type="Resource" uid="uid://b6su3dnw78dnd" path="res://inventory/playerInventory.tres" id="5_tt8dj"]
+[ext_resource type="PackedScene" uid="uid://cggix2y51msnq" path="res://npcs/spitter.tscn" id="6_oqrnj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kdk1"]
-texture = ExtResource("3_b8aqf")
+texture = ExtResource("2_063g7")
 0:0/size_in_atlas = Vector2i(2, 2)
 0:0/0 = 0
 
@@ -22,7 +22,7 @@ sources/0 = SubResource("TileSetAtlasSource_6kdk1")
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3y8my"]
-texture = ExtResource("4_vflsj")
+texture = ExtResource("3_07lvh")
 4:4/size_in_atlas = Vector2i(2, 2)
 4:4/0 = 0
 4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -79,7 +79,7 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_3y8my")
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_u5d4x")
+script = ExtResource("1_6nwxh")
 
 [node name="Floor" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_5hpj2")
@@ -94,16 +94,16 @@ tile_set = SubResource("TileSet_dray8")
 format = 2
 layer_0/tile_data = PackedInt32Array(1507353, 131072, 2, 1507354, 131072, 2, 1507355, 131072, 2, 1507356, 131072, 2, 1507357, 131072, 2, 1507358, 131072, 2, 1507359, 131072, 2, 1507360, 131072, 2, 1507361, 131072, 2, 1507362, 131072, 2, 1507363, 131072, 2, 1507364, 131072, 2, 1507365, 131072, 2, 1507366, 131072, 2, 1441831, 131072, 2, 1376295, 131072, 2, 1310759, 131072, 2, 1245223, 131072, 2, 1179687, 131072, 2, 1114151, 131072, 2, 1048615, 131072, 2, 983079, 131072, 2, 917543, 131072, 2, 852007, 131072, 2, 786471, 131072, 2, 720934, 131072, 2, 720933, 131072, 2, 720932, 131072, 2, 720931, 131072, 2, 720930, 131072, 2, 720929, 131072, 2, 720928, 131072, 2, 720927, 131072, 2, 720926, 131072, 2, 720925, 131072, 2, 720924, 131072, 2, 720923, 131072, 2, 720922, 131072, 2, 720921, 131072, 2, 786456, 131072, 2, 851992, 131072, 2, 917528, 131072, 2, 983064, 131072, 2, 1048600, 131072, 2, 1114136, 131072, 2, 1179672, 131072, 2, 1245208, 131072, 2, 1310744, 131072, 2, 1376280, 131072, 2, 1441816, 131072, 2, 1572887, 0, 4, 1572904, 262144, 4, 655400, 262144, 0, 655383, 0, 0, 1507351, 0, 2, 1572888, 131072, 4, 1572889, 131072, 4, 1572890, 131072, 4, 1572891, 131072, 4, 1572892, 131072, 4, 1572893, 131072, 4, 1572894, 131072, 4, 1572895, 131072, 4, 1572896, 131072, 4, 1572897, 131072, 4, 1572898, 131072, 4, 1572899, 131072, 4, 1572900, 131072, 4, 1572901, 131072, 4, 1572902, 131072, 4, 1572903, 131072, 4, 1507368, 262144, 2, 1441832, 262144, 2, 1376296, 262144, 2, 1310760, 262144, 2, 1245224, 262144, 2, 1179688, 262144, 2, 1114152, 262144, 2, 1048616, 262144, 2, 983080, 262144, 2, 917544, 262144, 2, 852008, 262144, 2, 786472, 262144, 2, 720936, 262144, 2, 655399, 131072, 0, 655398, 131072, 0, 655397, 131072, 0, 655396, 131072, 0, 655395, 131072, 0, 655394, 131072, 0, 655393, 131072, 0, 655392, 131072, 0, 655391, 131072, 0, 655390, 131072, 0, 655389, 131072, 0, 655388, 131072, 0, 655387, 131072, 0, 655386, 131072, 0, 655385, 131072, 0, 655384, 131072, 0, 720919, 0, 2, 786455, 0, 2, 851991, 0, 2, 917527, 0, 2, 983063, 0, 2, 1048599, 0, 2, 1114135, 0, 2, 1179671, 0, 2, 1245207, 0, 2, 1310743, 0, 2, 1376279, 0, 2, 1441815, 0, 2, 1507352, 131072, 2, 1507367, 131072, 2, 720935, 131072, 2, 720920, 131072, 2, 786460, 131072, 2, 851996, 131072, 2, 917532, 131072, 2, 917533, 131072, 2, 917534, 131072, 2, 917535, 131072, 2)
 
-[node name="Player" parent="." instance=ExtResource("5_6ac1o")]
+[node name="Player" parent="." instance=ExtResource("4_0mqv8")]
 light_mask = 4
 visibility_layer = 4
 z_index = 3
 position = Vector2(1020, 558)
-inventory = ExtResource("6_je7ge")
+inventory = ExtResource("5_tt8dj")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
 range_item_cull_mask = 0
 
-[node name="Spitter" parent="." instance=ExtResource("6_e6cit")]
+[node name="Spitter" parent="." instance=ExtResource("6_oqrnj")]
 position = Vector2(873, 422)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpeeqkp8vbq5u"]
 
-[ext_resource type="Script" path="res://inventory/UI/InventoryUI.gd" id="1_ftif3"]
+[ext_resource type="Script" path="res://inventory/UI/inventoryUI.gd" id="1_ftif3"]
 [ext_resource type="Texture2D" uid="uid://esf1rl0wlnp0" path="res://assets/Inventory_window_2.png" id="2_wdv3b"]
-[ext_resource type="PackedScene" uid="uid://dl0xewnfbn4cy" path="res://inventory/UI/InventoryItemDisplay.tscn" id="3_3nsn6"]
+[ext_resource type="PackedScene" uid="uid://dl0xewnfbn4cy" path="res://inventory/UI/inventoryItemDisplay.tscn" id="3_3nsn6"]
 
 [node name="InventoryUi" type="Control"]
 layout_mode = 3

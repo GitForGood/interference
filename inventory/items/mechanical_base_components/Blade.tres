@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://leqlb0lnfaya"]
 
-[ext_resource type="Script" path="res://inventory/InventoryItem.gd" id="1_7edim"]
+[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_7edim"]
 
 [resource]
 resource_local_to_scene = true

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://du71sh0qrv3k4"]
 
-[ext_resource type="Script" path="res://inventory/InventoryItem.gd" id="1_o1ruh"]
+[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_o1ruh"]
 [ext_resource type="Texture2D" uid="uid://mqpgke44i6k" path="res://assets/vacuum_tube.png" id="2_56myf"]
 
 [resource]

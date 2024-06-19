@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3ywrf3hprdlq"]
 
-[ext_resource type="Script" path="res://inventory/UI/InventoryUISlot.gd" id="1_tvpfn"]
+[ext_resource type="Script" path="res://inventory/UI/inventoryUISlot.gd" id="1_tvpfn"]
 [ext_resource type="Texture2D" uid="uid://ckwx05i66x28b" path="res://assets/item_slot_64x64.png" id="2_12b83"]
-[ext_resource type="Script" path="res://inventory/UI/InventoryItemUIDisplay.gd" id="3_cx0cw"]
+[ext_resource type="Script" path="res://inventory/UI/inventoryItemUIDisplay.gd" id="3_cx0cw"]
 
 [node name="Inventory_UI_Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
