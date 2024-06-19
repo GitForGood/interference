@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Solution" load_steps=2 format=3 uid="uid://dmt2golymoinn"]
+
+[ext_resource type="Script" path="res://salvage/solution.gd" id="1_1afks"]
+
+
+[resource]
+script = ExtResource("1_1afks")
+name = ""

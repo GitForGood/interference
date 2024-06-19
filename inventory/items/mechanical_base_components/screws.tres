@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://csu5ec87aq8fq"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_dgdoq"]
+
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_dgdoq")
+name = "Screws"
+vertical_slots = 1
+horizontal_slots = 1
+flipped = false
