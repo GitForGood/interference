@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5l8ukx3i4ifb"]
+[gd_scene load_steps=6 format=3 uid="uid://bercrw1krwnbq"]
 
 [ext_resource type="Script" path="res://npcs/spitter.gd" id="1_mnnmv"]
 [ext_resource type="Texture2D" uid="uid://cmygcp5vv5qqa" path="res://assets/ball.png" id="2_gx3yd"]
+[ext_resource type="PackedScene" uid="uid://cvkrikcbsu3at" path="res://hideable_sprite.tscn" id="2_pscq3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r2h5e"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2vow"]
+radius = 16.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nptpu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7co2e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -16,23 +18,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e6fnw"]
-
-[node name="spitter" type="CharacterBody2D"]
-visible = false
-collision_layer = 4
-collision_mask = 7
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_mnnmv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_r2h5e")
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 16
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_w2vow")
+
+[node name="HideableSprite" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_pscq3")]
+sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_nptpu")
-
-[node name="Collision Box" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Box"]
-shape = SubResource("CircleShape2D_e6fnw")
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_7co2e")

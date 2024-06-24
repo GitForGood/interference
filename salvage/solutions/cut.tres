@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://salvage/solution.gd" id="1_1afks"]
 
-
 [resource]
 script = ExtResource("1_1afks")
-name = ""
+name = "cut"

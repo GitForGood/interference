@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/ui/inventory_ui.tscn" id="3_lhp1v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ljic"]
-radius = 32.0
+radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_l5y1v"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -17,14 +17,19 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 14
-collision_mask = 14
+collision_layer = 8
+collision_mask = 22
 script = ExtResource("1_6gec5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 8
+visibility_layer = 8
+z_index = 4
 shape = SubResource("CircleShape2D_4ljic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 8
+visibility_layer = 8
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_arxcf")
 
@@ -34,6 +39,8 @@ light_mask = 128
 visibility_layer = 128
 
 [node name="Camera2D" type="Camera2D" parent="."]
+light_mask = 32
+visibility_layer = 32
 zoom = Vector2(3, 3)
 
 [node name="Lantern" type="PointLight2D" parent="."]
@@ -45,14 +52,16 @@ texture_scale = 10.0
 
 [node name="VisionCone" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 124
+collision_mask = 20
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone"]
+light_mask = 0
+z_index = 4
 position = Vector2(-16, -1)
 polygon = PackedVector2Array(16, 16, 1600, 1000, 1600, -1000, 16, -16)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-collision_mask = 3
+collision_mask = 2
 
-[connection signal="area_entered" from="VisionCone" to="." method="_on_vision_cone_area_entered"]
-[connection signal="area_exited" from="VisionCone" to="." method="_on_vision_cone_area_exited"]
+[connection signal="body_entered" from="VisionCone" to="." method="_on_vision_cone_body_entered"]
+[connection signal="body_exited" from="VisionCone" to="." method="_on_vision_cone_body_exited"]

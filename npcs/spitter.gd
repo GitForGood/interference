@@ -1,13 +1,6 @@
-extends CharacterBody2D
+extends Node2D
 
+@onready var sprite: HideableSprite = $HideableSprite
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-var hearing_range: int
-var hearing_range_modifiers: int
-
-var sight_cone
-
-func _physics_process(delta):
-	move_and_slide()
+var hearing_range: float
+var hearing_range_modifiers: float

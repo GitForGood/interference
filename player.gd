@@ -10,7 +10,7 @@ var movement_speed: float = 300.0
 
 var current_state: state = state.alert
 
-var current_bodies_in_scope: Array[CharacterBody2D]
+var current_bodies_in_scope: Array[PhysicsBody2D]
 
 enum state{
 	alert,
@@ -123,23 +123,26 @@ func equip_item(item: InventoryItem):
 func unequip_item():
 	collect(equipment_slot)
 	equipment_slot = null
-	
-func _on_vision_cone_area_entered(area: Area2D):
-	if current_bodies_in_scope.has(area.get_parent()):
-		return
-	current_bodies_in_scope.append(area.get_parent())
-
-func _on_vision_cone_area_exited(area):
-	var body = area.get_parent()
-	if current_bodies_in_scope.has(body):
-		current_bodies_in_scope.erase(body)
-		body.visible = false
 
 func update_vision():
 	for body in current_bodies_in_scope:
 		raycast.target_position = to_local(body.global_position)
 		raycast.force_raycast_update()
+		var sprite = body.get_parent().sprite
 		if not raycast.get_collider():
-			body.visible = true
+			sprite.spot()
 		else:
-			body.visible = false
+			sprite.unspot()
+
+
+func _on_vision_cone_body_entered(body: PhysicsBody2D):
+	if not body.get_parent().has_node("HideableSprite"):
+		return
+	if not body in current_bodies_in_scope:
+		current_bodies_in_scope.append(body)
+
+
+func _on_vision_cone_body_exited(body):
+	if current_bodies_in_scope.has(body):
+		current_bodies_in_scope.erase(body)
+		body.get_parent().sprite.unspot()

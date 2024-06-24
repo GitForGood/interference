@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo0ods8oellra"]
+[gd_scene load_steps=14 format=3 uid="uid://bo0ods8oellra"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_da1lf"]
 [ext_resource type="Texture2D" uid="uid://bgy74ex7w1bkr" path="res://assets/floor_tiles.png" id="3_b8aqf"]
 [ext_resource type="Texture2D" uid="uid://8dhreu1fktmf" path="res://assets/walls.png" id="4_vflsj"]
 [ext_resource type="PackedScene" uid="uid://1s51o3n7fjnk" path="res://player.tscn" id="5_6ac1o"]
-[ext_resource type="PackedScene" uid="uid://b5l8ukx3i4ifb" path="res://npcs/spitter.tscn" id="6_idmps"]
+[ext_resource type="PackedScene" uid="uid://bercrw1krwnbq" path="res://npcs/spitter.tscn" id="6_idmps"]
 [ext_resource type="Resource" uid="uid://b6su3dnw78dnd" path="res://inventory/player_inventory.tres" id="6_je7ge"]
+[ext_resource type="PackedScene" uid="uid://dp7fnc0n02c1e" path="res://decor/desk.tscn" id="7_krvlk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kdk1"]
 texture = ExtResource("3_b8aqf")
@@ -107,3 +108,10 @@ range_item_cull_mask = 0
 
 [node name="spitter" parent="." instance=ExtResource("6_idmps")]
 position = Vector2(870, 400)
+
+[node name="Desk" parent="." instance=ExtResource("7_krvlk")]
+position = Vector2(944, 416)
+rotation = 1.5708
+
+[node name="DirectionalLight2D2" type="DirectionalLight2D" parent="."]
+editor_only = true

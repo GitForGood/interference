@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://salvage/solution.gd" id="1_ak6c1"]
 
-
 [resource]
 script = ExtResource("1_ak6c1")
-name = ""
+name = "screw"
