@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var vision_cone = $VisionCone
 @onready var sprite = $AnimatedSprite2D
 @onready var shotgun = $Shotgun
+@onready var hitscan = $Hitscan
 
 var attack_cooldown_primary: float = 0.0
 var attack_cooldown_secondary: float = 0.0
@@ -17,7 +18,7 @@ var current_state: state = state.alert
 var current_bodies_in_scope: Array[PhysicsBody2D]
 var walk_animtation_timer: SceneTreeTimer
 
-
+const ENEMY_COLLISION_LAYER = 5
 
 signal changed_state(state: state)
 
@@ -30,6 +31,7 @@ enum state{
 }
 
 func _ready():
+	equip_ranged_weapon(shotgun)
 	pass
 
 func input_check_if_toggle_inventory():
@@ -192,11 +194,18 @@ func walk_animation_check():
 				walk_animtation_timer.timeout.disconnect(cancel_walk_animation)
 				walk_animtation_timer = null
 
-func create_bullets(accuracy: float, damage: int, speed: float, salvo: int):
-	var ray = get_local_mouse_position()-position
-	for bullet in salvo:
-		pass
+func create_bullet(accuracy: float, damage: int):
+	var mouse_angle = get_local_mouse_position().normalized().angle()
+	mouse_angle += clamp(randfn(0.0, accuracy), -(1-accuracy), (1-accuracy))
+	hitscan.target_position = Vector2.RIGHT.rotated(mouse_angle) * 2000
+	hitscan.force_raycast_update()
+	var hit_location = hitscan.get_collision_point()
+	var collision = hitscan.get_collider()
+	if collision:
+		if collision.is_in_group("enemy"):
+			collision.get_parent().damage(damage)
+	
 
 func equip_ranged_weapon(weapon: WeaponRanged):
 	shotgun = weapon
-	weapon.attacked.connect(create_bullets)
+	weapon.attacked.connect(create_bullet)

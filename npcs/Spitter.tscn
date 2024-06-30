@@ -21,7 +21,7 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_mnnmv")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemy"]]
 collision_layer = 16
 collision_mask = 14
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://1s51o3n7fjnk"]
+[gd_scene load_steps=15 format=3 uid="uid://1s51o3n7fjnk"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_6gec5"]
 [ext_resource type="Texture2D" uid="uid://dhmbfscw50oau" path="res://assets/sprites/spritesheets/walk.png" id="2_86s2p"]
 [ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/ui/inventory_ui.tscn" id="3_lhp1v"]
 [ext_resource type="PackedScene" uid="uid://bbpgtiflucw4g" path="res://inventory/items/equipment/weapons/shotgun.tscn" id="4_dljns"]
-[ext_resource type="Script" path="res://inventory/items/equipment/weapons/ranged_weapon_stats.gd" id="5_qu0pr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ljic"]
 radius = 12.0
@@ -70,18 +69,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="Resource" id="Resource_wu6ku"]
-resource_local_to_scene = true
-script = ExtResource("5_qu0pr")
-accuracy = 0.6
-bullet_damage = 10.0
-bullet_speed = 200.0
-salvo_size = 12
-consumes_ammo = true
-reload_speed_in_sec = 0.5
-ammo_capacity = 2
-ammo_name = "shells"
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 22
@@ -129,7 +116,9 @@ polygon = PackedVector2Array(16, 16, 1600, 1000, 1600, -1000, 16, -16)
 collision_mask = 2
 
 [node name="Shotgun" parent="." instance=ExtResource("4_dljns")]
-weapon_stats = SubResource("Resource_wu6ku")
+
+[node name="Hitscan" type="RayCast2D" parent="."]
+collision_mask = 22
 
 [connection signal="body_entered" from="VisionCone" to="." method="_on_vision_cone_body_entered"]
 [connection signal="body_exited" from="VisionCone" to="." method="_on_vision_cone_body_exited"]

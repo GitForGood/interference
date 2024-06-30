@@ -115,3 +115,5 @@ rotation = 1.5708
 
 [node name="DirectionalLight2D2" type="DirectionalLight2D" parent="."]
 editor_only = true
+
+[node name="ProjectileHandler" type="Node2D" parent="."]
