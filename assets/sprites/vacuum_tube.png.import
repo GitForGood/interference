@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmygcp5vv5qqa"
-path="res://.godot/imported/ball.png-ca93c4f2e7b7f8325cbd933673092ff4.ctex"
+uid="uid://mqpgke44i6k"
+path="res://.godot/imported/vacuum_tube.png-9d266a0468c5b775150160b95396a3ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ball.png"
-dest_files=["res://.godot/imported/ball.png-ca93c4f2e7b7f8325cbd933673092ff4.ctex"]
+source_file="res://assets/sprites/vacuum_tube.png"
+dest_files=["res://.godot/imported/vacuum_tube.png-9d266a0468c5b775150160b95396a3ae.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mqpgke44i6k"
-path="res://.godot/imported/vacuum_tube.png-505ddd52fc31d2997a97060f9ddf7042.ctex"
+uid="uid://ckwx05i66x28b"
+path="res://.godot/imported/item_slot_64x64.png-736d256e858468c1432ca68ffc253bcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vacuum_tube.png"
-dest_files=["res://.godot/imported/vacuum_tube.png-505ddd52fc31d2997a97060f9ddf7042.ctex"]
+source_file="res://assets/sprites/item_slot_64x64.png"
+dest_files=["res://.godot/imported/item_slot_64x64.png-736d256e858468c1432ca68ffc253bcc.ctex"]
 
 [params]
 

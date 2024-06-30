@@ -1,20 +1,86 @@
-[gd_scene load_steps=7 format=3 uid="uid://1s51o3n7fjnk"]
+[gd_scene load_steps=17 format=3 uid="uid://1s51o3n7fjnk"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_6gec5"]
-[ext_resource type="Texture2D" uid="uid://esf1rl0wlnp0" path="res://assets/Inventory_window_2.png" id="2_arxcf"]
+[ext_resource type="Texture2D" uid="uid://dhmbfscw50oau" path="res://assets/sprites/spritesheets/walk.png" id="2_86s2p"]
 [ext_resource type="PackedScene" uid="uid://dpeeqkp8vbq5u" path="res://inventory/ui/inventory_ui.tscn" id="3_lhp1v"]
+[ext_resource type="PackedScene" uid="uid://bbpgtiflucw4g" path="res://inventory/items/equipment/weapons/shotgun.tscn" id="4_dljns"]
+[ext_resource type="Script" path="res://inventory/items/equipment/weapons/ranged_weapon_stats.gd" id="5_qu0pr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ljic"]
-radius = 16.0
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q6tg"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hter"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg3a8"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m207v"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knh4m"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peyir"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88j3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q6tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hter")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg3a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m207v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knh4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peyir")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_l5y1v"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rfx7h"]
 gradient = SubResource("Gradient_l5y1v")
+width = 32
+height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Resource" id="Resource_wu6ku"]
+resource_local_to_scene = true
+script = ExtResource("5_qu0pr")
+accuracy = 0.6
+bullet_damage = 10.0
+bullet_speed = 200.0
+salvo_size = 12
+consumes_ammo = true
+reload_speed_in_sec = 0.5
+ammo_capacity = 2
+ammo_name = "shells"
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 8
@@ -27,11 +93,10 @@ visibility_layer = 8
 z_index = 4
 shape = SubResource("CircleShape2D_4ljic")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-light_mask = 8
-visibility_layer = 8
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_arxcf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_88j3e")
+frame = 1
+frame_progress = 0.582518
 
 [node name="InventoryUi" parent="." instance=ExtResource("3_lhp1v")]
 visible = false
@@ -44,7 +109,7 @@ visibility_layer = 32
 zoom = Vector2(3, 3)
 
 [node name="Lantern" type="PointLight2D" parent="."]
-range_item_cull_mask = 7
+range_item_cull_mask = 15
 shadow_enabled = true
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_rfx7h")
@@ -62,6 +127,9 @@ polygon = PackedVector2Array(16, 16, 1600, 1000, 1600, -1000, 16, -16)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 2
+
+[node name="Shotgun" parent="." instance=ExtResource("4_dljns")]
+weapon_stats = SubResource("Resource_wu6ku")
 
 [connection signal="body_entered" from="VisionCone" to="." method="_on_vision_cone_body_entered"]
 [connection signal="body_exited" from="VisionCone" to="." method="_on_vision_cone_body_exited"]

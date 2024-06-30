@@ -5,12 +5,23 @@ extends CharacterBody2D
 @onready var inventory_ui = $InventoryUi
 @onready var flashlight = $Lantern
 @onready var raycast = $RayCast2D
+@onready var camera = $Camera2D
+@onready var vision_cone = $VisionCone
+@onready var sprite = $AnimatedSprite2D
+@onready var shotgun = $Shotgun
 
-var movement_speed: float = 300.0
-
+var attack_cooldown_primary: float = 0.0
+var attack_cooldown_secondary: float = 0.0
+var movement_speed: float = 100.0
 var current_state: state = state.alert
-
 var current_bodies_in_scope: Array[PhysicsBody2D]
+var walk_animtation_timer: SceneTreeTimer
+
+
+
+signal changed_state(state: state)
+
+var cancel_walk_animation: Callable = func(): sprite.stop()
 
 enum state{
 	alert,
@@ -18,21 +29,8 @@ enum state{
 	interacting
 }
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var bag: InventoryContainer = load("res://inventory/containers/pouch_nixie.tres")
-	var tube: InventoryItem = load("res://inventory/items/electrical_base_components/nixie_tube.tres")
-	var wrench: InventoryItem = load("res://inventory/items/equipment/abittaboth/wrench.tres")
-	var tmpTube = tube.duplicate()
-	bag.flipped = true
-	inventory.insert(tmpTube)
-	tmpTube = tube.duplicate()
-	inventory.insert(tmpTube)
-	tmpTube = tube.duplicate()
-	tmpTube.flipped = true
-	inventory.insert(tmpTube)
-	inventory.insert(bag)
-	inventory.insert(wrench)
+	pass
 
 func input_check_if_toggle_inventory():
 	if Input.is_action_just_pressed("inventory"):
@@ -53,17 +51,42 @@ func input_calculate_movement_direction() -> Vector2:
 		direction += Vector2.LEFT
 	return direction.normalized()
 
-func check_if_toggle_flashlight():
+func input_check_if_attack():
+	if Input.is_action_just_pressed("primary_fire"):
+		if attack_cooldown_primary < 0.0:
+			shotgun.attack()
+	if Input.is_action_just_pressed("secondary_fire"):
+		if attack_cooldown_primary < 0.0:
+			pass
+
+func input_reload_check():
+	if Input.is_action_just_pressed("reload"):
+		shotgun.reload()
+
+func input_check_if_toggle_flashlight():
 	if Input.is_action_just_pressed("flashlight"):
 		flashlight.enabled = !flashlight.enabled
 
 func input_check_if_moving():
 	if Input.is_action_just_pressed("movement_keys"):
 		switch_state(state.alert)
+		
+func input_check_if_move_camera():
+	if Input.is_action_pressed("shift"):
+		var pos = get_local_mouse_position() / 2
+		camera.offset.x = lerp(camera.offset.x, pos.x, 0.005)
+		camera.offset.y = lerp(camera.offset.y, pos.y, 0.005)
+	else:
+		if camera.offset.length() < 0.01:
+			return
+		else:
+			camera.offset.x = lerp(camera.offset.x, 0.0, 0.005)
+			camera.offset.y = lerp(camera.offset.y, 0.0, 0.005)
 
 func switch_state(to: state):
 	exit_state()
 	enter_state(to)
+	changed_state.emit(to)
 
 func enter_state(to: state):
 	match to:
@@ -92,9 +115,13 @@ func exit_state():
 func state_input_handler():
 	match current_state:
 		state.alert:
-			velocity = input_calculate_movement_direction() * movement_speed
+			velocity = lerp(velocity, input_calculate_movement_direction() * movement_speed, 0.005)
+			walk_animation_check()
 			input_check_if_toggle_inventory()
-			check_if_toggle_flashlight()
+			input_check_if_toggle_flashlight()
+			input_check_if_move_camera()
+			input_reload_check()
+			input_check_if_attack()
 			return
 		state.inventory:
 			input_check_if_moving()
@@ -106,11 +133,12 @@ func state_input_handler():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	attack_cooldown_secondary -= delta
+	attack_cooldown_primary -= delta
 	state_input_handler()
-	move_and_slide()
-	$VisionCone.look_at(get_global_mouse_position())
 	update_vision()
-	pass
+	rotate_sprite()
+	move_and_slide()
 
 func collect(item: InventoryItem):
 	inventory.insert(item)
@@ -134,6 +162,10 @@ func update_vision():
 		else:
 			sprite.unspot()
 
+func rotate_sprite():
+	sprite.look_at(get_global_mouse_position())
+	sprite.rotate(PI/2)
+	vision_cone.look_at(get_global_mouse_position())
 
 func _on_vision_cone_body_entered(body: PhysicsBody2D):
 	if not body.get_parent().has_node("HideableSprite"):
@@ -141,8 +173,30 @@ func _on_vision_cone_body_entered(body: PhysicsBody2D):
 	if not body in current_bodies_in_scope:
 		current_bodies_in_scope.append(body)
 
-
 func _on_vision_cone_body_exited(body):
 	if current_bodies_in_scope.has(body):
 		current_bodies_in_scope.erase(body)
 		body.get_parent().sprite.unspot()
+
+func walk_animation_check():
+	if sprite.is_playing():
+		if velocity.length() < 1.0:
+			sprite.pause()
+			if not walk_animtation_timer:
+				walk_animtation_timer = get_tree().create_timer(0.5)
+				walk_animtation_timer.timeout.connect(cancel_walk_animation)
+	else:
+		if velocity.length() > 1.0:
+			sprite.play()
+			if walk_animtation_timer:
+				walk_animtation_timer.timeout.disconnect(cancel_walk_animation)
+				walk_animtation_timer = null
+
+func create_bullets(accuracy: float, damage: int, speed: float, salvo: int):
+	var ray = get_local_mouse_position()-position
+	for bullet in salvo:
+		pass
+
+func equip_ranged_weapon(weapon: WeaponRanged):
+	shotgun = weapon
+	weapon.attacked.connect(create_bullets)

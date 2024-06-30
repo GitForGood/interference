@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgm888as6med5"
-path="res://.godot/imported/wrench.png-39f6665c29d6e5f1874a73540de1c34f.ctex"
+uid="uid://c0yih2pbttrg2"
+path="res://.godot/imported/nixie_pouch.png-1d5f4ba27cf314b92c4e0efa53c89ab4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wrench.png"
-dest_files=["res://.godot/imported/wrench.png-39f6665c29d6e5f1874a73540de1c34f.ctex"]
+source_file="res://assets/sprites/nixie_pouch.png"
+dest_files=["res://.godot/imported/nixie_pouch.png-1d5f4ba27cf314b92c4e0efa53c89ab4.ctex"]
 
 [params]
 

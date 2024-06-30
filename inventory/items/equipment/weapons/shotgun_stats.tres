@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RangedWeaponStats" load_steps=2 format=3 uid="uid://cngq5hgedwybl"]
+
+[ext_resource type="Script" path="res://inventory/items/equipment/weapons/ranged_weapon_stats.gd" id="1_rjctu"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_rjctu")
+accuracy = 0.6
+bullet_damage = 10.0
+bullet_speed = 200.0
+salvo_size = 12
+consumes_ammo = true
+reload_speed_in_sec = 0.5
+ammo_capacity = 2
+ammo_name = "shells"

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvkrikcbsu3at" path="res://hideable_sprite.tscn" id="1_8mr7l"]
 [ext_resource type="Script" path="res://decor/desk.gd" id="1_yvy85"]
-[ext_resource type="Texture2D" uid="uid://uvmpgi4hvhw7" path="res://assets/table.png" id="2_po4yq"]
+[ext_resource type="Texture2D" uid="uid://uvmpgi4hvhw7" path="res://assets/sprites/table.png" id="2_po4yq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d3thp"]
 animations = [{

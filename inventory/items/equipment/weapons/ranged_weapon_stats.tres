@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dcrdm52vqb4lm"]
+
+[ext_resource type="Script" path="res://inventory/items/equipment/weapons/ranged_weapon_stats.gd" id="1_ncdp0"]
+
+[resource]
+script = ExtResource("1_ncdp0")
+accuracy = 0.0
+bullet_damage = 0.0
+bullet_speed = 0.0
+salvo_size = 0
+consumes_ammo = false
+reload_speed_in_sec = 0.0
+ammo_capacity = 0
+ammo_name = ""

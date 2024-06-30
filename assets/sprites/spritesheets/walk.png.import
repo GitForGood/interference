@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0yih2pbttrg2"
-path="res://.godot/imported/nixie_pouch.png-36243c29cf998aa1a38ec98e5d20d934.ctex"
+uid="uid://dhmbfscw50oau"
+path="res://.godot/imported/walk.png-fb0f1cdd64f253b23a5222b0d220f606.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/nixie_pouch.png"
-dest_files=["res://.godot/imported/nixie_pouch.png-36243c29cf998aa1a38ec98e5d20d934.ctex"]
+source_file="res://assets/sprites/spritesheets/walk.png"
+dest_files=["res://.godot/imported/walk.png-fb0f1cdd64f253b23a5222b0d220f606.ctex"]
 
 [params]
 
