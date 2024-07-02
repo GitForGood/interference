@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var vision_cone = $VisionCone
 @onready var sprite = $AnimatedSprite2D
 @onready var shotgun = $Shotgun
-@onready var hitscan = $Hitscan
+@onready var hitscan: RayCast2D = $Hitscan
 
 var attack_cooldown_primary: float = 0.0
 var attack_cooldown_secondary: float = 0.0
@@ -209,7 +209,7 @@ func create_bullet(accuracy: float, damage: int):
 	# spawn hitmarker
 	var hit_location = hitscan.get_collision_point()
 	var collision = hitscan.get_collider()
-	var marker = HitMarker.new(collision.to_local(hit_location), HIT_MARKER_DURATION)
+	var marker = HitMarker.new(global_position, collision.to_local(hit_location), HIT_MARKER_DURATION)
 	collision.add_child(marker)
 	# damage the hit object if it is relevant
 	if collision:
