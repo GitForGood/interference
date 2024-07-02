@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_rjctu")
-accuracy = 0.8
+accuracy = 0.9
 bullet_damage = 10.0
 salvo_size = 12
 consumes_ammo = true

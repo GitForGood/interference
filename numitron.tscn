@@ -1,0 +1,134 @@
+[gd_scene load_steps=17 format=3 uid="uid://bxs8wm7323c3l"]
+
+[ext_resource type="Script" path="res://numitron.gd" id="1_kglmt"]
+[ext_resource type="Texture2D" uid="uid://do1gmolenio7y" path="res://assets/sprites/spritesheets/numitron.png" id="2_f1232"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4wpx"]
+texture = ExtResource("2_f1232")
+texture_region_size = Vector2i(16, 24)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_d5fcu"]
+sources/0 = SubResource("TileSetAtlasSource_a4wpx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4iaw"]
+atlas = ExtResource("2_f1232")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0avx0"]
+atlas = ExtResource("2_f1232")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p4yn"]
+atlas = ExtResource("2_f1232")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcpqs"]
+atlas = ExtResource("2_f1232")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3gp1"]
+atlas = ExtResource("2_f1232")
+region = Rect2(80, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4xuc"]
+atlas = ExtResource("2_f1232")
+region = Rect2(96, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5uav"]
+atlas = ExtResource("2_f1232")
+region = Rect2(112, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mspo"]
+atlas = ExtResource("2_f1232")
+region = Rect2(128, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyguk"]
+atlas = ExtResource("2_f1232")
+region = Rect2(144, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbgmq"]
+atlas = ExtResource("2_f1232")
+region = Rect2(160, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is350"]
+atlas = ExtResource("2_f1232")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvfms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4iaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0avx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p4yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcpqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3gp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4xuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5uav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mspo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyguk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbgmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is350")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Numitron" type="Node2D"]
+light_mask = 32
+visibility_layer = 33
+script = ExtResource("1_kglmt")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, -8)
+tile_set = SubResource("TileSet_d5fcu")
+format = 2
+layer_0/tile_data = PackedInt32Array(65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0)
+
+[node name="Kilo" type="AnimatedSprite2D" parent="."]
+position = Vector2(-24, 0)
+sprite_frames = SubResource("SpriteFrames_wvfms")
+
+[node name="Hekta" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, 0)
+sprite_frames = SubResource("SpriteFrames_wvfms")
+
+[node name="Deca" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 0)
+sprite_frames = SubResource("SpriteFrames_wvfms")
+
+[node name="Digit" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 0)
+sprite_frames = SubResource("SpriteFrames_wvfms")

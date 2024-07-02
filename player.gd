@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @export var inventory: Inventory
 @export var equipment_slot: InventoryItem
-@onready var inventory_ui = $InventoryUi
+@onready var inventory_ui = $Camera2D/InventoryUi
+@onready var shot_counter = $Camera2D/Numitron
 @onready var flashlight = $Lantern
 @onready var raycast = $RayCast2D
 @onready var camera = $Camera2D
@@ -17,6 +18,7 @@ var movement_speed: float = 100.0
 var current_state: state = state.alert
 var current_bodies_in_scope: Array[PhysicsBody2D]
 var walk_animtation_timer: SceneTreeTimer
+var shots_fired: int = 0
 
 const ENEMY_COLLISION_LAYER = 5
 
@@ -57,6 +59,7 @@ func input_check_if_attack():
 	if Input.is_action_just_pressed("primary_fire"):
 		if attack_cooldown_primary < 0.0:
 			shotgun.attack()
+			shots_fired += 1
 	if Input.is_action_just_pressed("secondary_fire"):
 		if attack_cooldown_primary < 0.0:
 			pass
@@ -135,6 +138,7 @@ func state_input_handler():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	shot_counter.update_value(shots_fired)
 	attack_cooldown_secondary -= delta
 	attack_cooldown_primary -= delta
 	state_input_handler()
@@ -194,17 +198,23 @@ func walk_animation_check():
 				walk_animtation_timer.timeout.disconnect(cancel_walk_animation)
 				walk_animtation_timer = null
 
+
+const HIT_MARKER_DURATION = 2.5
 func create_bullet(accuracy: float, damage: int):
+	# shoot
 	var mouse_angle = get_local_mouse_position().normalized().angle()
-	mouse_angle += clamp(randfn(0.0, accuracy), -(1-accuracy), (1-accuracy))
+	mouse_angle += clampf(randfn(0.0, (1-accuracy)), -2*(1-accuracy), 2*(1-accuracy))
 	hitscan.target_position = Vector2.RIGHT.rotated(mouse_angle) * 2000
 	hitscan.force_raycast_update()
+	# spawn hitmarker
 	var hit_location = hitscan.get_collision_point()
 	var collision = hitscan.get_collider()
+	var marker = HitMarker.new(collision.to_local(hit_location), HIT_MARKER_DURATION)
+	collision.add_child(marker)
+	# damage the hit object if it is relevant
 	if collision:
 		if collision.is_in_group("enemy"):
 			collision.get_parent().damage(damage)
-	
 
 func equip_ranged_weapon(weapon: WeaponRanged):
 	shotgun = weapon

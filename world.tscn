@@ -104,7 +104,7 @@ inventory = ExtResource("6_je7ge")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
-range_item_cull_mask = 0
+range_item_cull_mask = 31
 
 [node name="spitter" parent="." instance=ExtResource("6_idmps")]
 position = Vector2(870, 400)
@@ -115,5 +115,6 @@ rotation = 1.5708
 
 [node name="DirectionalLight2D2" type="DirectionalLight2D" parent="."]
 editor_only = true
+range_item_cull_mask = 3
 
 [node name="ProjectileHandler" type="Node2D" parent="."]
