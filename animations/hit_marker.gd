@@ -21,7 +21,7 @@ func _ready():
 	
 	sprite = Sprite2D.new()
 	sprite.texture = load(TEXTURE_PATH)
-	sprite.rotation = (global_origin-position).angle() + PI
+	sprite.rotation = (line.points[0] - line.points[1]).angle()
 	add_child(sprite)
 	var tween = sprite.create_tween()
 	tween.tween_property(sprite, "modulate", Color(1,1,1,0), time_out).set_ease(Tween.EASE_IN)
