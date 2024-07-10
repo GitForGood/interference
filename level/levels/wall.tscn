@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxaglnqg38ldr"]
+
+[ext_resource type="Script" path="res://level/levels/wall.gd" id="1_43xi2"]
+[ext_resource type="Texture2D" uid="uid://8dhreu1fktmf" path="res://assets/sprites/spritesheets/walls.png" id="2_3csh4"]
+[ext_resource type="PackedScene" uid="uid://djv50ol1hhuhb" path="res://components/component_hit_box.tscn" id="3_dl7ac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyghw"]
+atlas = ExtResource("2_3csh4")
+region = Rect2(32, 32, 32, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lsoy4"]
+polygon = PackedVector2Array(-16, -4, 16, -4, 16, 4, -16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xsyh"]
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brv43"]
+size = Vector2(32, 8)
+
+[node name="Wall" type="Node2D" groups=["wall"]]
+script = ExtResource("1_43xi2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_lyghw")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_lsoy4")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 48
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_7xsyh")
+
+[node name="HitBox" parent="." instance=ExtResource("3_dl7ac")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_brv43")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

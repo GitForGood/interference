@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShellStats" load_steps=4 format=3 uid="uid://dvk4pqrn8k8o8"]
+
+[ext_resource type="Script" path="res://equipment/ammo/shell_stats.gd" id="1_2kbtc"]
+[ext_resource type="Resource" uid="uid://b35vrqpskjhd5" path="res://attacks/implemented/resources/birdshot.tres" id="1_it0k4"]
+
+[sub_resource type="Curve" id="Curve_pcvuf"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.245342, -0.00862062), 0.0, 0.0, 0, 0, Vector2(0.751553, 0.00738919), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("1_2kbtc")
+bullet_stats = ExtResource("1_it0k4")
+number_of_bullets = 25
+accuracy_curve = SubResource("Curve_pcvuf")
+max_deviancy_radians = 0.262

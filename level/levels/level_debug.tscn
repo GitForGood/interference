@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://bo0ods8oellra"]
+
+[ext_resource type="Script" path="res://level/level.gd" id="1_ba6i6"]
+[ext_resource type="Texture2D" uid="uid://bgy74ex7w1bkr" path="res://assets/sprites/floor_tiles.png" id="2_kurhl"]
+[ext_resource type="PackedScene" uid="uid://dxaglnqg38ldr" path="res://level/levels/wall.tscn" id="3_mibpm"]
+[ext_resource type="Script" path="res://level/decor_handler.gd" id="4_gbwiu"]
+[ext_resource type="Script" path="res://level/entity_handler.gd" id="5_h5lrv"]
+[ext_resource type="PackedScene" uid="uid://bercrw1krwnbq" path="res://entities/npcs/spitter.tscn" id="6_nd4hd"]
+[ext_resource type="PackedScene" uid="uid://1s51o3n7fjnk" path="res://entities/player.tscn" id="7_1f7bu"]
+[ext_resource type="Script" path="res://level/projectile_handler.gd" id="8_jshsl"]
+[ext_resource type="Script" path="res://level/hitscan_handler.gd" id="8_rfrdn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kdk1"]
+texture = ExtResource("2_kurhl")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5hpj2"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_6kdk1")
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ba6i6")
+
+[node name="Floor" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5hpj2")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 0, 0, -2, 0, 0, -3, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -65536, 0, 0, -65535, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 65534, 0, 0, 65533, 0, 0, 131070, 0, 0, 131071, 0, 0, 131069, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 2, 0, 0, -65534, 0, 0, -131070, 0, 0, -131071, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 65539, 0, 0, 3, 0, 0, -65533, 0, 0, -131069, 0, 0, -196605, 0, 0, -196606, 0, 0, -196607, 0, 0, -196608, 0, 0, -131073, 0, 0, -131074, 0, 0, -131075, 0, 0, -65540, 0, 0, -4, 0, 0, 65532, 0, 0, 131068, 0, 0, 196604, 0, 0, -131076, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -196604, 0, 0, -262140, 0, 0, -262141, 0, 0, -131068, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 262140, 0, 0, 262139, 0, 0, 196603, 0, 0, 131067, 0, 0, 65531, 0, 0, -5, 0, 0, -65541, 0, 0, -131077, 0, 0, -196613, 0, 0)
+
+[node name="WallContainer" type="Node2D" parent="."]
+
+[node name="Wall" parent="WallContainer" instance=ExtResource("3_mibpm")]
+position = Vector2(200, -100)
+rotation = 1.5708
+
+[node name="DecorHandler" type="Node2D" parent="."]
+script = ExtResource("4_gbwiu")
+
+[node name="EntitiyHandler" type="Node2D" parent="."]
+script = ExtResource("5_h5lrv")
+
+[node name="Spitter" parent="EntitiyHandler" instance=ExtResource("6_nd4hd")]
+position = Vector2(0, -100)
+
+[node name="Player" parent="EntitiyHandler" instance=ExtResource("7_1f7bu")]
+
+[node name="HitscanHandler" type="Node2D" parent="."]
+script = ExtResource("8_rfrdn")
+
+[node name="ProjectileHandler" type="Node2D" parent="."]
+script = ExtResource("8_jshsl")
+
+[node name="Global Shadow" type="DirectionalLight2D" parent="."]
+blend_mode = 1
+range_item_cull_mask = 31
+
+[node name="DebugGlobalLight" type="DirectionalLight2D" parent="."]
+editor_only = true
+range_item_cull_mask = 3
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="UI" type="CanvasLayer" parent="PlayerCamera"]
+
+[node name="Parallax" type="CanvasLayer" parent="PlayerCamera"]
+layer = -1

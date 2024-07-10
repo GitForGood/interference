@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BulletStats" load_steps=5 format=3 uid="uid://b35vrqpskjhd5"]
+
+[ext_resource type="Script" path="res://attacks/attack_payloads/damage_constant.gd" id="1_cdr1t"]
+[ext_resource type="Resource" uid="uid://cc7c7wap5e5ir" path="res://attacks/bullet_default_stats.tres" id="2_to6sq"]
+[ext_resource type="Script" path="res://attacks/bullet_stats.gd" id="3_3d3nv"]
+
+[sub_resource type="Resource" id="Resource_so6si"]
+script = ExtResource("1_cdr1t")
+damage = 1.0
+
+[resource]
+script = ExtResource("3_3d3nv")
+projectile_stats = ExtResource("2_to6sq")
+payloads = Array[Resource("res://attacks/attack_payloads/payload.gd")]([SubResource("Resource_so6si")])
+scene_path = "\"res://attacks/implemented/birdshot.tscn\""

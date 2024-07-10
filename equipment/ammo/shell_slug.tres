@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShellStats" load_steps=3 format=3 uid="uid://ckdw1yvmnppup"]
+
+[ext_resource type="Script" path="res://equipment/ammo/shell_stats.gd" id="1_a5kti"]
+
+[sub_resource type="Curve" id="Curve_yub4e"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_a5kti")
+number_of_bullets = 1
+accuracy_curve = SubResource("Curve_yub4e")
+max_deviancy_radians = 0.262

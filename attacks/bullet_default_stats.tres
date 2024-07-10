@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ProjectileStats" load_steps=2 format=3 uid="uid://cc7c7wap5e5ir"]
+
+[ext_resource type="Script" path="res://attacks/attack_propagation/ranged_projectile.gd" id="1_eaady"]
+
+[resource]
+script = ExtResource("1_eaady")
+projectile_speed = 2000.0
+projectile_max_speed = 2000.0
+projectile_acceleration = 0.0
+projectile_destructable = false
+projectile_lifespan_sec = 10.0
+projectile_bounces = 0
+projectile_penetrations = 1

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dip3eed0s04wh"]
+
+[ext_resource type="Script" path="res://components/component_los.gd" id="1_rrjss"]
+
+[node name="ComponentLos" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_rrjss")
+
+[node name="ObstructionRay" type="RayCast2D" parent="."]
+collision_mask = 0
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

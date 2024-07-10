@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://lgkgcdo2m1p2"]
+
+[ext_resource type="Script" path="res://equipment/resources/arc.gd" id="1_1o8xb"]
+
+[node name="Arc" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(0, 100, 25.9, 96.6, 50, 86.6, 70.7, 70.7, 86.6, 50, 96.6, 25.9, 100, 0, 96.6, -25.9, 86.6, -50, 70.7, -70.7, 50, -86.6, 25.9, -96.6, 0, -100)
+script = ExtResource("1_1o8xb")
+radius = 200.0
+radians = 1.04681

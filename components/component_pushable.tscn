@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vn7ueosndqmh"]
+
+[ext_resource type="Script" path="res://components/component_pushable.gd" id="1_40i6c"]
+
+[node name="ComponentPushable" type="Node"]
+script = ExtResource("1_40i6c")

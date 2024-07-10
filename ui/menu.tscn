@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8jtbxidk1t4k"]
+
+[ext_resource type="Texture2D" uid="uid://cn4boc4dend0m" path="res://assets/sprites/background_minimal.png" id="1_rxaj8"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 78.0
+texture = ExtResource("1_rxaj8")
+region_rect = Rect2(0, 0, 17, 17)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8

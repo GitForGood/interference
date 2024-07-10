@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @export_range(0,9999) var value: int 
 
@@ -14,10 +14,6 @@ func _ready():
 	tenth.set_frame(10)
 	digit.set_frame(10)
 	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func update_value(to: int):
 	assert (to in range(10000))

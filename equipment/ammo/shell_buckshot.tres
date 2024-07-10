@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShellStats" load_steps=4 format=3 uid="uid://cgg5vjd06q17y"]
+
+[ext_resource type="Resource" uid="uid://dt6l28or5u8vt" path="res://attacks/implemented/resources/buckshot.tres" id="1_j43ua"]
+[ext_resource type="Script" path="res://equipment/ammo/shell_stats.gd" id="2_ljjy4"]
+
+[sub_resource type="Curve" id="Curve_0xkum"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.245342, -0.216749), 0.0, 0.0, 0, 0, Vector2(0.748447, 0.199507), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("2_ljjy4")
+bullet_stats = ExtResource("1_j43ua")
+number_of_bullets = 9
+accuracy_curve = SubResource("Curve_0xkum")
+max_deviancy_radians = 0.262

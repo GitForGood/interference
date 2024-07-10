@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bercrw1krwnbq"]
+
+[ext_resource type="Script" path="res://entities/npcs/spitter.gd" id="1_mnnmv"]
+[ext_resource type="Texture2D" uid="uid://cmygcp5vv5qqa" path="res://assets/sprites/ball.png" id="2_gx3yd"]
+[ext_resource type="PackedScene" uid="uid://cvkrikcbsu3at" path="res://hideable_sprite.tscn" id="2_pscq3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2vow"]
+radius = 16.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7co2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gx3yd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Spitter" type="CharacterBody2D" groups=["entity"]]
+light_mask = 8
+visibility_layer = 8
+collision_layer = 8
+collision_mask = 62
+script = ExtResource("1_mnnmv")
+
+[node name="HideableSprite" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_pscq3")]
+light_mask = 8
+visibility_layer = 8
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w2vow")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 8
+visibility_layer = 8
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_7co2e")
+
+[node name="ProjectileSpawnMarker" type="Marker2D" parent="."]
+position = Vector2(22, 0)

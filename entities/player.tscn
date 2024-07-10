@@ -1,0 +1,123 @@
+[gd_scene load_steps=19 format=3 uid="uid://1s51o3n7fjnk"]
+
+[ext_resource type="Script" path="res://entities/player.gd" id="1_6gec5"]
+[ext_resource type="Texture2D" uid="uid://dhmbfscw50oau" path="res://assets/sprites/spritesheets/walk.png" id="2_86s2p"]
+[ext_resource type="PackedScene" uid="uid://dip3eed0s04wh" path="res://components/component_los.tscn" id="3_2eeb0"]
+[ext_resource type="PackedScene" uid="uid://cc8sqfu3ta532" path="res://components/component_health.tscn" id="4_ttwom"]
+[ext_resource type="PackedScene" uid="uid://crcpb6sqan2is" path="res://components/component_hurt_box.tscn" id="5_q6knl"]
+[ext_resource type="PackedScene" uid="uid://vn7ueosndqmh" path="res://components/component_pushable.tscn" id="6_25aep"]
+[ext_resource type="PackedScene" uid="uid://bbpgtiflucw4g" path="res://equipment/weapons/double_barrel_shotgun.tscn" id="7_u752b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lt8t3"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q6tg"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hter"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg3a8"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m207v"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knh4m"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peyir"]
+atlas = ExtResource("2_86s2p")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88j3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q6tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hter")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg3a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m207v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knh4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peyir")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_l5y1v"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rfx7h"]
+gradient = SubResource("Gradient_l5y1v")
+width = 48
+height = 48
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2hoe"]
+
+[node name="Player" type="CharacterBody2D" groups=["entity"]]
+collision_layer = 32
+collision_mask = 30
+script = ExtResource("1_6gec5")
+
+[node name="Hand" type="Marker2D" parent="."]
+position = Vector2(4, 10)
+
+[node name="Shotgun" parent="Hand" instance=ExtResource("7_u752b")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lt8t3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_88j3e")
+frame = 1
+frame_progress = 0.582518
+
+[node name="Lantern" type="PointLight2D" parent="."]
+range_item_cull_mask = 15
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_rfx7h")
+texture_scale = 10.0
+
+[node name="ComponentLos" parent="." instance=ExtResource("3_2eeb0")]
+obstructor_layers = 2
+target_layers = 116
+
+[node name="Arc" parent="ComponentLos" instance_placeholder="res://equipment/resources/arc.tscn"]
+radians = 2.09481
+
+[node name="ComponentHealth" parent="." instance=ExtResource("4_ttwom")]
+MAX_HEALTH = 20.0
+
+[node name="HurtBox" parent="." instance=ExtResource("5_q6knl")]
+collision_layer = 0
+collision_mask = 112
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_v2hoe")
+
+[node name="ComponentPushable" parent="." instance=ExtResource("6_25aep")]
+
+[connection signal="target_entered_los" from="ComponentLos" to="." method="_on_component_los_target_entered_los"]
+[connection signal="target_exited_los" from="ComponentLos" to="." method="_on_component_los_target_exited_los"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bljbxekfopxbw"]
+
+[sub_resource type="GDScript" id="GDScript_jk8fh"]
+
+[node name="ComponentReloadable" type="Node"]
+script = SubResource("GDScript_jk8fh")
