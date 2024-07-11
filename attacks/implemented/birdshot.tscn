@@ -1,23 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://djfblo2ubpvle"]
+[gd_scene load_steps=4 format=3 uid="uid://djfblo2ubpvle"]
 
 [ext_resource type="Script" path="res://attacks/bullet_base.gd" id="1_omsnm"]
 [ext_resource type="Resource" uid="uid://b35vrqpskjhd5" path="res://attacks/implemented/resources/birdshot.tres" id="2_ds6in"]
-[ext_resource type="PackedScene" uid="uid://djv50ol1hhuhb" path="res://components/component_hit_box.tscn" id="3_5w0g3"]
 [ext_resource type="Texture2D" uid="uid://du6ggxbio7r0d" path="res://assets/sprites/bullet_small.png" id="3_031pf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g03wy"]
-size = Vector2(2, 2)
-
-[node name="Birdshot" type="Node2D" node_paths=PackedStringArray("hit_box", "sprite")]
+[node name="Birdshot" type="Node2D" node_paths=PackedStringArray("sprite", "raycast")]
 script = ExtResource("1_omsnm")
 bullet_stats = ExtResource("2_ds6in")
-hit_box = NodePath("HitBox")
 sprite = NodePath("Sprite2D")
+raycast = NodePath("RayCast2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_031pf")
 
-[node name="HitBox" parent="." instance=ExtResource("3_5w0g3")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("RectangleShape2D_g03wy")
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 0

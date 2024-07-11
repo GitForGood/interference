@@ -1,51 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5nxkaoybj6ob"]
+[gd_scene load_steps=5 format=3 uid="uid://c5nxkaoybj6ob"]
 
 [ext_resource type="Script" path="res://attacks/bullet_base.gd" id="1_gv7xq"]
 [ext_resource type="Resource" uid="uid://dt6l28or5u8vt" path="res://attacks/implemented/resources/buckshot.tres" id="2_3110c"]
+[ext_resource type="PackedScene" uid="uid://dw4jtg2xa2vnj" path="res://effects/hit_particles.tscn" id="4_p55nk"]
 [ext_resource type="Texture2D" uid="uid://dbihcl565v8t7" path="res://assets/sprites/bullet_medium.png" id="6_rivyw"]
-[ext_resource type="Script" path="res://components/component_hit_box.gd" id="7_dkphk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vwo71"]
-radius = 1.0
-
-[sub_resource type="Curve" id="Curve_yrinm"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_00yi5"]
-curve = SubResource("Curve_yrinm")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kyebt"]
-particle_flag_disable_z = true
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 1.0
-emission_ring_inner_radius = 0.0
-angle_min = -45.0
-angle_max = 45.0
-angle_curve = SubResource("CurveTexture_00yi5")
-spread = 0.0
-gravity = Vector3(0, 98, 0)
-
-[node name="Buckshot" type="Node2D" node_paths=PackedStringArray("hit_box", "sprite")]
+[node name="Buckshot" type="Node2D" node_paths=PackedStringArray("sprite", "raycast", "hit_particles")]
 script = ExtResource("1_gv7xq")
 bullet_stats = ExtResource("2_3110c")
-hit_box = NodePath("HitBox")
 sprite = NodePath("Sprite2D")
+raycast = NodePath("RayCast2D")
+hit_particles = NodePath("GPUParticles2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_rivyw")
 
-[node name="HitBox" type="Area2D" parent="."]
-script = ExtResource("7_dkphk")
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 0
+collide_with_areas = true
+collide_with_bodies = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_vwo71")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 32
-process_material = SubResource("ParticleProcessMaterial_kyebt")
-lifetime = 0.1
-explosiveness = 1.0
+[node name="GPUParticles2D" parent="." instance=ExtResource("4_p55nk")]

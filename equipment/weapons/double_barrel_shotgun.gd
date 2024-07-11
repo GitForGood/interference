@@ -8,19 +8,11 @@ var is_reloading: bool = false
 var is_shooting: bool = false
 var ammo_left: int
 
-const packed_bullet_scene_birdshot = preload("res://attacks/implemented/birdshot.tscn")
-const packed_bullet_scene_buckshot = preload("res://attacks/implemented/buckshot.tscn")
-const packed_bullet_scene_slug = preload("res://attacks/implemented/slug.tscn")
-
-func get_scene_from_bullet_stats(stats: BulletStats):
-	stats.scene_path
-
 func _ready():
 	animation_player.animation_finished.connect(finish_reloading_after_animation)
 	animation_player.animation_finished.connect(finish_shooting_after_animation)
 	ammo_left = gun_stats.ammo_max
 	loaded_shell = load("res://equipment/ammo/shell_buckshot.tres")
-
 
 func finish_reloading_after_animation(animation: String):
 	if animation == "shotgun/close":
@@ -65,11 +57,11 @@ func fire_primary():
 
 func spawn_bullets():
 	var number_of_bullets = loaded_shell.number_of_bullets
-	var path: String = loaded_shell.bullet_stats.scene_path
-	var relevant_bullet_scene = packed_bullet_scene_buckshot
+	var relevant_bullet_scene = load("res://attacks/implemented/buckshot.tscn")
 	for bullets in loaded_shell.number_of_bullets:
-		var new_bullet: BulletBase = relevant_bullet_scene.instantiate()
-		new_bullet.position = $EndPoint.position
 		var deviance = loaded_shell.accuracy_curve.sample(randf())*loaded_shell.max_deviancy_radians
-		new_bullet.velocity = (Vector2.RIGHT * loaded_shell.bullet_stats.projectile_stats.projectile_speed).rotated(deviance)
+		var spawn_pos = $EndPoint.position
+		var new_bullet: BulletBase = relevant_bullet_scene.instantiate()
+		new_bullet.translate(spawn_pos)
+		new_bullet.deviance = deviance
 		add_child(new_bullet)
