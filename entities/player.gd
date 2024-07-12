@@ -13,11 +13,12 @@ class_name Player
 # vision stuff
 var current_state: State = State.alert
 var current_bodies_in_scope: Array[PhysicsBody2D]
+var look_at_goal: Vector2
 
 # movement related stuff
 var movement_speed: float = 150.0
 var movement_speed_modifier: float = 0.8
-var movement_smoothness: float = 5.0
+var movement_smoothness: float = 8.0
 const HIT_MARKER_DURATION = 2.5
 
 enum State{
@@ -41,7 +42,7 @@ func unequip():
 func _ready():
 	#vision_cone.get_child(0).queue_free()
 	#vision_cone.remove_child(vision_cone.get_child(0))
-	vision_cone.add_child(Arc.new(12,200.0,PI*2/3.0))
+	vision_cone.add_child(Arc.new(12,200.0,TAU/3))
 	equipment_slot = $Hand.get_child(0)
 	pass
 
@@ -113,12 +114,14 @@ func input_check_if_toggle_flashlight():
 
 
 func check_inputs_for_state(state: State, delta: float):
+	look_at_goal = get_global_mouse_position()
 	match state:
 		State.alert:
 			var move_direction = input_calculate_movement_direction()
 			velocity = lerp(velocity, move_direction * movement_speed, delta * movement_smoothness)
 			input_check_if_attack(delta)
 			input_reload_check()
+			look_at(look_at_goal)
 		State.hands_tied:
 			pass
 		State.interacting:
@@ -149,8 +152,6 @@ func _process(delta):
 	# inputs for changing state
 	check_state_change_conditions(current_state)
 	# physics
-	look_at(get_global_mouse_position())
-	equipment_slot.look_at(get_global_mouse_position())
 	move_and_slide()
 
 func inflict_damage(damage: float):
@@ -160,8 +161,12 @@ func _on_body_entered(body):
 	# handle being hit by projectile
 	pass
 
-func _on_component_los_target_entered_los(target):
-	target.get_parent().visible = true
+func _on_component_los_target_entered_los(target: Area2D):
+	var target_sprite = target.get_parent().get_node("ComponentSpottableSprite")
+	if target_sprite:
+		target_sprite.enter_sight()
 
 func _on_component_los_target_exited_los(target):
-	target.get_parent().visible = false
+	var target_sprite = target.get_parent().get_node("ComponentSpottableSprite")
+	if target_sprite:
+		target_sprite.leave_sight()

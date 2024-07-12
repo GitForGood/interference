@@ -1,4 +1,5 @@
 extends Node
+class_name PushableComponent
 
 @export var inertia: float = 1.0
 

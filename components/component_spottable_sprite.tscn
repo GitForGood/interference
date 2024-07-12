@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vioy464oa7se"]
+
+[ext_resource type="Script" path="res://components/scripts/component_spottable_sprite.gd" id="1_6cmuu"]
+
+[node name="ComponentSpottableSprite" type="AnimatedSprite2D"]
+script = ExtResource("1_6cmuu")

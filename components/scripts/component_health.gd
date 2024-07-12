@@ -9,8 +9,9 @@ signal died()
 
 func _ready():
 	health = MAX_HEALTH
+	died.connect(func(): get_parent().queue_free())
 
-func damage(damage: float):
+func damage(damage: float, place: Vector2):
 	health -= damage
 	hurt.emit(damage, health)
 	if health <= 0.0:

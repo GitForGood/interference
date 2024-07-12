@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bbpgtiflucw4g"]
+[gd_scene load_steps=38 format=3 uid="uid://bbpgtiflucw4g"]
 
 [ext_resource type="Script" path="res://equipment/weapons/double_barrel_shotgun.gd" id="1_niksk"]
 [ext_resource type="AudioStream" uid="uid://dain4ju0tswnh" path="res://assets/sfx/click.wav" id="2_3o34x"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://70ewqh5tflfl" path="res://assets/sfx/shotgun_shell_insert.wav" id="4_42wcl"]
 [ext_resource type="Texture2D" uid="uid://c8t6prl3sxawt" path="res://assets/sprites/spritesheets/shotgun_reload_spritesheet.png" id="4_mrxd2"]
 [ext_resource type="AudioStream" uid="uid://b31px3uxa5jpr" path="res://assets/sfx/shotgun_close.wav" id="6_puyky"]
-[ext_resource type="AudioStream" uid="uid://b6hmbh1hm4eia" path="res://assets/sfx/shotgun_blast.wav" id="9_maog2"]
+[ext_resource type="AudioStream" uid="uid://by4jw5ry23j2f" path="res://assets/sfx/gunshot.wav" id="10_kh3fl"]
 
 [sub_resource type="Resource" id="Resource_l018k"]
 script = ExtResource("2_eywcw")
@@ -102,6 +102,28 @@ animations = [{
 "name": &"ready",
 "speed": 5.0
 }]
+
+[sub_resource type="Curve" id="Curve_3jjos"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jniim"]
+curve = SubResource("Curve_3jjos")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hkhee"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+flatness = 0.9
+initial_velocity_min = 20.13
+initial_velocity_max = 20.13
+gravity = Vector3(0, 0, 0)
+damping_min = 40.0
+damping_max = 40.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_jniim")
+color = Color(0, 0, 0, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sw8nl"]
 
@@ -324,33 +346,35 @@ tracks/1/use_blend = true
 [sub_resource type="Animation" id="Animation_l7bd2"]
 resource_name = "shoot_live"
 length = 0.5
-tracks/0/type = "audio"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("9_maog2")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.05, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 8), Vector2(0, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunshotSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ps7n6"]
+resource_name = "obscure"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xwlmb"]
 _data = {
@@ -359,6 +383,7 @@ _data = {
 "eject_second": SubResource("Animation_ntlvd"),
 "insert_first": SubResource("Animation_0seyw"),
 "insert_second": SubResource("Animation_24x5h"),
+"obscure": SubResource("Animation_ps7n6"),
 "open": SubResource("Animation_n2mfd"),
 "shoot_dud": SubResource("Animation_afgc8"),
 "shoot_live": SubResource("Animation_l7bd2")
@@ -370,10 +395,23 @@ gun_stats = SubResource("Resource_l018k")
 loaded_shell = ExtResource("3_e5f0w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(12, 0)
+position = Vector2(9, 0)
 rotation = 1.5708
+scale = Vector2(1, 0.8)
 sprite_frames = SubResource("SpriteFrames_pv3c0")
 animation = &"ready"
+
+[node name="EndPoint" type="Marker2D" parent="AnimatedSprite2D"]
+position = Vector2(-1.5, -16.25)
+rotation = -1.5708
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -16)
+rotation = -1.5708
+scale = Vector2(1.25, 1)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_hkhee")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -384,5 +422,9 @@ libraries = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 3
 
-[node name="EndPoint" type="Marker2D" parent="."]
-position = Vector2(28, 0)
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(22, 0)
+collision_mask = 30
+
+[node name="GunshotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_kh3fl")

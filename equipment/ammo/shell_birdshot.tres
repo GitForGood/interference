@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve" id="Curve_pcvuf"]
 min_value = -1.0
-_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.245342, -0.00862062), 0.0, 0.0, 0, 0, Vector2(0.751553, 0.00738919), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.248447, -0.248768), 0.0, 0.0, 0, 0, Vector2(0.748447, 0.247537), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dip3eed0s04wh"]
 
-[ext_resource type="Script" path="res://components/component_los.gd" id="1_rrjss"]
+[ext_resource type="Script" path="res://components/scripts/component_los.gd" id="1_rrjss"]
 
 [node name="ComponentLos" type="Area2D"]
 collision_layer = 0

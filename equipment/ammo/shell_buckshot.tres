@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve" id="Curve_0xkum"]
 min_value = -1.0
-_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.245342, -0.216749), 0.0, 0.0, 0, 0, Vector2(0.748447, 0.199507), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.245342, -0.248768), 0.0, 0.0, 0, 0, Vector2(0.745342, 0.247537), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [resource]
@@ -13,4 +13,4 @@ script = ExtResource("2_ljjy4")
 bullet_stats = ExtResource("1_j43ua")
 number_of_bullets = 9
 accuracy_curve = SubResource("Curve_0xkum")
-max_deviancy_radians = 0.262
+max_deviancy_radians = 0.2

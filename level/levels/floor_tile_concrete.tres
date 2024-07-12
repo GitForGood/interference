@@ -1,0 +1,13 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bselxwjwt4wr1"]
+
+[ext_resource type="Texture2D" uid="uid://b8vhhillfnsmj" path="res://assets/sprites/spritesheets/concrete_floor.png" id="1_1yrol"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tm2ec"]
+texture = ExtResource("1_1yrol")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_tm2ec")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://7mkijy5ft0r0"]
 
-[ext_resource type="Script" path="res://components/component_sonar.gd" id="1_ftju4"]
+[ext_resource type="Script" path="res://components/scripts/component_sonar.gd" id="1_ftju4"]
 
 [node name="ComponentSonar" type="Area2D"]
 script = ExtResource("1_ftju4")

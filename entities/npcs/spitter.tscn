@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bercrw1krwnbq"]
+[gd_scene load_steps=9 format=3 uid="uid://bercrw1krwnbq"]
 
 [ext_resource type="Script" path="res://entities/npcs/spitter.gd" id="1_mnnmv"]
 [ext_resource type="Texture2D" uid="uid://cmygcp5vv5qqa" path="res://assets/sprites/ball.png" id="2_gx3yd"]
-[ext_resource type="PackedScene" uid="uid://cvkrikcbsu3at" path="res://hideable_sprite.tscn" id="2_pscq3"]
+[ext_resource type="PackedScene" uid="uid://vioy464oa7se" path="res://components/component_spottable_sprite.tscn" id="2_ltgfb"]
+[ext_resource type="PackedScene" uid="uid://crcpb6sqan2is" path="res://components/component_hurt_box.tscn" id="4_mcnwb"]
+[ext_resource type="PackedScene" uid="uid://cc8sqfu3ta532" path="res://components/component_health.tscn" id="5_sru6q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w2vow"]
-radius = 16.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7co2e"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_t05t4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -18,26 +19,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cnjq5"]
+
 [node name="Spitter" type="CharacterBody2D" groups=["entity"]]
 light_mask = 8
 visibility_layer = 8
-collision_layer = 8
+collision_layer = 16
 collision_mask = 62
 script = ExtResource("1_mnnmv")
-
-[node name="HideableSprite" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_pscq3")]
-light_mask = 8
-visibility_layer = 8
-sprite = NodePath("../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w2vow")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-light_mask = 8
-visibility_layer = 8
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_7co2e")
-
 [node name="ProjectileSpawnMarker" type="Marker2D" parent="."]
 position = Vector2(22, 0)
+
+[node name="ComponentSpottableSprite" parent="." instance=ExtResource("2_ltgfb")]
+sprite_frames = SubResource("SpriteFrames_t05t4")
+
+[node name="HurtBox" parent="." instance=ExtResource("4_mcnwb")]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_cnjq5")
+
+[node name="ComponentHealth" parent="." instance=ExtResource("5_sru6q")]

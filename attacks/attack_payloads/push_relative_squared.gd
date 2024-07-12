@@ -6,7 +6,8 @@ class_name PayloadPushDissipated
 
 func deliver(origin: Vector2, onto: Area2D):
 	var parent = onto.get_parent()
-	if parent.has_node("ComponentPushable"):
+	var pushable_component: PushableComponent = parent.get_node("ComponentPushable")
+	if pushable_component:
 		var percent_of_range = 1.0 - (origin - parent.global_position).length() / range
 		var force_relative = force * (percent_of_range**2)
-		parent.push((parent.global_position - origin).normalized() * force_relative)
+		pushable_component.push((parent.global_position - origin).normalized() * force_relative)

@@ -1,7 +1,5 @@
 extends Entity
 
-@onready var sprite: HideableSprite = $HideableSprite
-
 var hearing_range: float
 var hearing_range_modifiers: float
 var shooting_timer = 4.0

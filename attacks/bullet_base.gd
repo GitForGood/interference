@@ -19,6 +19,7 @@ func _ready():
 	raycast.collision_mask = bullet_stats.hitscan_stats.collision_mask
 	raycast.target_position = Vector2.RIGHT * bullet_stats.hitscan_stats.hitscan_range
 	raycast.rotate(deviance)
+	raycast.hit_from_inside = true
 	raycast.force_raycast_update()
 	var last_collision_point: Vector2
 	while(raycast.is_colliding() and penetrations <= bullet_stats.hitscan_stats.hitscan_penetrations):
@@ -37,4 +38,4 @@ func _ready():
 		last_collision_point = raycast.target_position.rotated(deviance + global_rotation)
 	var trail = Trail.new(global_position, last_collision_point, bullet_stats.hitscan_stats.trail_stats)
 	get_tree().root.add_child(trail)
-	queue_free()
+	get_tree().create_timer(2.0+deviance).timeout.connect(func(): queue_free())

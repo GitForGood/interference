@@ -66,8 +66,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rfx7h"]
 gradient = SubResource("Gradient_l5y1v")
-width = 48
-height = 48
+width = 16
+height = 16
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
@@ -75,8 +75,8 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_v2hoe"]
 
 [node name="Player" type="CharacterBody2D" groups=["entity"]]
-collision_layer = 32
-collision_mask = 30
+collision_layer = 8
+collision_mask = 54
 script = ExtResource("1_6gec5")
 
 [node name="Hand" type="Marker2D" parent="."]
@@ -94,6 +94,7 @@ frame = 1
 frame_progress = 0.582518
 
 [node name="Lantern" type="PointLight2D" parent="."]
+visible = false
 range_item_cull_mask = 15
 shadow_enabled = true
 shadow_item_cull_mask = 3

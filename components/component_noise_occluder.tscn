@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8f14o1x5j7g8"]
 
-[ext_resource type="Script" path="res://components/component_noise_occluder.gd" id="1_3hdqj"]
+[ext_resource type="Script" path="res://components/scripts/component_noise_occluder.gd" id="1_3hdqj"]
 
 [node name="ComponentNoiseOccluder" type="Area2D"]
 collision_layer = 128
